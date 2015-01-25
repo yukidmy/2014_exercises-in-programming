@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>scenario.c</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/scenario.c</h2>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L9'>[^]</a><a href='#L38'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L9' title='Defined at 9.'>initscenario</a>
+<li><a href='#L14' title='Defined at 14.'>addevent</a>
+<li><a href='#L18' title='Defined at 18.'>resetmark</a>
+<li><a href='#L23' title='Defined at 23.'>getcurrentmark</a>
+<li><a href='#L27' title='Defined at 27.'>setmark</a>
+<li><a href='#L38' title='Defined at 38.'>getnextevent</a>
+</ol>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* scenario.c */</font></i>
+<a name='L2'>   2 <font color='darkred'>#include</font>&lt;<a href='23.html'>scenario.h</a>&gt;
+<a name='L3'>   3 <font color='darkred'>#include</font>&lt;<a href='21.html'>bidlist.h</a>&gt;
+<a name='L4'>   4 <font color='darkred'>#include</font>&lt;stdio.h&gt;
+<a name='L5'>   5 
+<a name='L6'>   6 <b>static</b> <a href='../D/26.html' title='Multiple defined in 2 places.'>bidlist</a>* <a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>;
+<a name='L7'>   7 <b>static</b> <b>int</b> <a href='../Y/61.html' title='Multiple used in 15 places.'>mark</a>;
+<a name='L8'>   8 
+<a name='L9'>   9 <b>void</b> <a href='../R/62.html' title='Multiple refered from 2 places.'>initscenario</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L10'>  10   <a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a> = <a href='../S/17.html#L6' title='Defined at 6 in bidlist.c.'>newbidlist</a>();
+<a name='L11'>  11   <a href='../Y/61.html' title='Multiple used in 15 places.'>mark</a> = 0;
+<a name='L12'>  12 <font color='red'>}</font> 
+<a name='L13'>  13 
+<a name='L14'>  14 <b>void</b> <a href='../R/24.html' title='Multiple refered from 2 places.'>addevent</a>(<a href='../Y/40.html' title='Multiple used in 2 places.'>event</a>* <a href='../Y/39.html' title='Multiple used in 16 places.'>ev</a>)<font color='red'>{</font>
+<a name='L15'>  15   <a href='../S/17.html#L15' title='Defined at 15 in bidlist.c.'>bidlistadd</a>(<a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>, <a href='../Y/39.html' title='Multiple used in 16 places.'>ev</a>);
+<a name='L16'>  16 <font color='red'>}</font>
+<a name='L17'>  17 
+<a name='L18'>  18 <b>void</b> <a href='../R/83.html' title='Multiple refered from 2 places.'>resetmark</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L19'>  19   <a href='../S/17.html#L65' title='Defined at 65 in bidlist.c.'>bidlistreset</a>(<a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>); 
+<a name='L20'>  20   <a href='../Y/61.html' title='Multiple used in 15 places.'>mark</a> = 0;
+<a name='L21'>  21 <font color='red'>}</font>
+<a name='L22'>  22 
+<a name='L23'>  23 <b>int</b> <a href='../S/23.html#L11' title='Refered from 11 in scenario.h.'>getcurrentmark</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L24'>  24   <b>return</b> <a href='../Y/61.html' title='Multiple used in 15 places.'>mark</a>;
+<a name='L25'>  25 <font color='red'>}</font>
+<a name='L26'>  26 
+<a name='L27'>  27 <b>void</b> <a href='../S/23.html#L12' title='Refered from 12 in scenario.h.'>setmark</a>(<b>int</b> <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>)<font color='red'>{</font>
+<a name='L28'>  28   <b>int</b> <a href='../Y/26.html' title='Multiple used in 8 places.'>cnt</a> = <a href='../S/17.html#L52' title='Defined at 52 in bidlist.c.'>bidlistcount</a>(<a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>);
+<a name='L29'>  29   <b>if</b>(<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>&lt;<a href='../Y/26.html' title='Multiple used in 8 places.'>cnt</a>)<font color='red'>{</font>
+<a name='L30'>  30     <a href='../Y/61.html' title='Multiple used in 15 places.'>mark</a> = <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>;
+<a name='L31'>  31     <a href='../S/17.html#L77' title='Defined at 77 in bidlist.c.'>bidlistsetmark</a>(<a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>, <a href='../S/17.html#L56' title='Defined at 56 in bidlist.c.'>bidlistget</a>(<a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>, <a href='../Y/61.html' title='Multiple used in 15 places.'>mark</a>)); 
+<a name='L32'>  32   <font color='red'>}</font><b>else</b><font color='red'>{</font>
+<a name='L33'>  33     <a href='../Y/61.html' title='Multiple used in 15 places.'>mark</a> = <a href='../Y/26.html' title='Multiple used in 8 places.'>cnt</a>;
+<a name='L34'>  34     <a href='../S/17.html#L77' title='Defined at 77 in bidlist.c.'>bidlistsetmark</a>(<a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>, <a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>-&gt;<a href='../Y/96.html' title='Multiple used in 8 places.'>tail</a>); 
+<a name='L35'>  35   <font color='red'>}</font>
+<a name='L36'>  36 <font color='red'>}</font>
+<a name='L37'>  37 
+<a name='L38'>  38 <a href='../D/44.html' title='Multiple defined in 2 places.'>event</a>* <a href='../R/55.html' title='Multiple refered from 3 places.'>getnextevent</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L39'>  39   <a href='../D/44.html' title='Multiple defined in 2 places.'>event</a>* <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a> = <a href='../Y/6.html' title='Multiple used in 14 places.'>NULL</a>;
+<a name='L40'>  40   <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/71.html' title='Multiple used in 21 places.'>node</a> = <a href='../S/17.html#L69' title='Defined at 69 in bidlist.c.'>bidlistnext</a>(<a href='../Y/88.html' title='Multiple used in 8 places.'>scenario</a>); 
+<a name='L41'>  41   <b>if</b>(<a href='../Y/71.html' title='Multiple used in 21 places.'>node</a> != <a href='../Y/6.html' title='Multiple used in 14 places.'>NULL</a>)<font color='red'>{</font>
+<a name='L42'>  42     <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a> = (<a href='../D/44.html' title='Multiple defined in 2 places.'>event</a>*)(<a href='../Y/71.html' title='Multiple used in 21 places.'>node</a>-&gt;<a href='../Y/33.html' title='Multiple used in 10 places.'>data</a>);
+<a name='L43'>  43   <font color='red'>}</font>
+<a name='L44'>  44   <b>return</b> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>;
+<a name='L45'>  45 <font color='red'>}</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L9'>[^]</a><a href='#L38'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

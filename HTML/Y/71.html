@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>node</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/17.html#L31'>node</a>               31 bidlist.c      int bidlistremove(bidlist* blist, bidnode* node){
+<a href='../S/17.html#L32'>node</a>               32 bidlist.c        bidnode* prev = node-&gt;prev;
+<a href='../S/17.html#L33'>node</a>               33 bidlist.c        bidnode* next = node-&gt;next;
+<a href='../S/17.html#L34'>node</a>               34 bidlist.c        if(blist-&gt;mark == node){
+<a href='../S/17.html#L35'>node</a>               35 bidlist.c          blist-&gt;mark = node-&gt;next;
+<a href='../S/17.html#L47'>node</a>               47 bidlist.c        free(node);
+<a href='../S/17.html#L77'>node</a>               77 bidlist.c      bidnode* bidlistsetmark(bidlist* blist, bidnode* node){
+<a href='../S/17.html#L78'>node</a>               78 bidlist.c        blist-&gt;mark = node;
+<a href='../S/17.html#L79'>node</a>               79 bidlist.c        return node;
+<a href='../S/21.html#L21'>node</a>               21 bidlist.h      int bidlistremove(bidlist* blist, bidnode* node);
+<a href='../S/21.html#L26'>node</a>               26 bidlist.h      bidnode* bidlistsetmark(bidlist* blist, bidnode* node);
+<a href='../S/8.html#L42'>node</a>               42 movingobjectmanager.c   bidnode* node;
+<a href='../S/8.html#L46'>node</a>               46 movingobjectmanager.c   while((node = bidlistnext(objlist))){
+<a href='../S/8.html#L47'>node</a>               47 movingobjectmanager.c     nodes[num] = node;
+<a href='../S/8.html#L48'>node</a>               48 movingobjectmanager.c     mobj =(movingobject*)(node-&gt;data);
+<a href='../S/8.html#L71'>node</a>               71 movingobjectmanager.c   bidnode* node;
+<a href='../S/8.html#L74'>node</a>               74 movingobjectmanager.c   while((node = bidlistnext(objlist))){
+<a href='../S/8.html#L75'>node</a>               75 movingobjectmanager.c     mobj = (node-&gt;data);
+<a href='../S/11.html#L40'>node</a>               40 scenario.c       bidnode* node = bidlistnext(scenario); 
+<a href='../S/11.html#L41'>node</a>               41 scenario.c       if(node != NULL){
+<a href='../S/11.html#L42'>node</a>               42 scenario.c         ret = (event*)(node-&gt;data);
+</pre>
+</body>
+</html>

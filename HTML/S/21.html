@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>bidlist.h</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/bidlist.h</h2>
+<i><font color='green'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2><a href='../J/2.html' title='Multiple included from 4 places.'>INCLUDED FROM</a></h2>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* bidlist.h */</font></i>
+<a name='L2'>   2 <font color='darkred'>#ifndef</font> <a href='../S/21.html#L3' title='Defined at 3 in bidlist.h.'>_BIDLIST_H_</a>
+<a name='L3'>   3 <font color='darkred'>#define</font> <a href='../S/21.html#L2' title='Refered from 2 in bidlist.h.'>_BIDLIST_H_</a>
+<a name='L4'>   4 
+<a name='L5'>   5 <b>typedef</b> <b>struct</b> <a href='../R/34.html' title='Multiple refered from 20 places.'>bidnode</a><font color='red'>{</font>
+<a name='L6'>   6   <b>struct</b> <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/83.html' title='Multiple used in 7 places.'>prev</a>;
+<a name='L7'>   7   <b>struct</b> <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/69.html' title='Multiple used in 11 places.'>next</a>;
+<a name='L8'>   8   <b>void</b>* <a href='../Y/33.html' title='Multiple used in 10 places.'>data</a>; 
+<a name='L9'>   9 <font color='red'>}</font> <a href='../R/34.html' title='Multiple refered from 20 places.'>bidnode</a>;
+<a name='L10'>  10 
+<a name='L11'>  11 <b>typedef</b> <b>struct</b> <a href='../R/26.html' title='Multiple refered from 5 places.'>bidlist</a><font color='red'>{</font>
+<a name='L12'>  12   <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/49.html' title='Multiple used in 7 places.'>head</a>;
+<a name='L13'>  13   <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/96.html' title='Multiple used in 8 places.'>tail</a>;
+<a name='L14'>  14   <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/61.html' title='Multiple used in 15 places.'>mark</a>;
+<a name='L15'>  15   <b>int</b> <a href='../Y/30.html' title='Multiple used in 15 places.'>count</a>;
+<a name='L16'>  16 <font color='red'>}</font> <a href='../R/26.html' title='Multiple refered from 5 places.'>bidlist</a>;
+<a name='L17'>  17 
+<a name='L18'>  18 
+<a name='L19'>  19 <a href='../D/26.html' title='Multiple defined in 2 places.'>bidlist</a>* <a href='../S/17.html#L6' title='Defined at 6 in bidlist.c.'>newbidlist</a>(<b>void</b>);
+<a name='L20'>  20 <b>int</b> <a href='../S/17.html#L15' title='Defined at 15 in bidlist.c.'>bidlistadd</a>(<a href='../Y/17.html' title='Multiple used in 14 places.'>bidlist</a>* <a href='../Y/19.html' title='Multiple used in 34 places.'>blist</a>, <b>void</b>* <a href='../Y/33.html' title='Multiple used in 10 places.'>data</a>);
+<a name='L21'>  21 <b>int</b> <a href='../S/17.html#L31' title='Defined at 31 in bidlist.c.'>bidlistremove</a>(<a href='../Y/17.html' title='Multiple used in 14 places.'>bidlist</a>* <a href='../Y/19.html' title='Multiple used in 34 places.'>blist</a>, <a href='../Y/18.html' title='Multiple used in 4 places.'>bidnode</a>* <a href='../Y/71.html' title='Multiple used in 21 places.'>node</a>);
+<a name='L22'>  22 <b>int</b> <a href='../S/17.html#L52' title='Defined at 52 in bidlist.c.'>bidlistcount</a>(<a href='../Y/17.html' title='Multiple used in 14 places.'>bidlist</a>* <a href='../Y/19.html' title='Multiple used in 34 places.'>blist</a>);
+<a name='L23'>  23 <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../S/17.html#L56' title='Defined at 56 in bidlist.c.'>bidlistget</a>(<a href='../Y/17.html' title='Multiple used in 14 places.'>bidlist</a>* <a href='../Y/19.html' title='Multiple used in 34 places.'>blist</a>, <b>int</b> <a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>);
+<a name='L24'>  24 <b>void</b> <a href='../S/17.html#L65' title='Defined at 65 in bidlist.c.'>bidlistreset</a>(<a href='../Y/17.html' title='Multiple used in 14 places.'>bidlist</a>* <a href='../Y/19.html' title='Multiple used in 34 places.'>blist</a>);
+<a name='L25'>  25 <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../S/17.html#L69' title='Defined at 69 in bidlist.c.'>bidlistnext</a>(<a href='../Y/17.html' title='Multiple used in 14 places.'>bidlist</a>* <a href='../Y/19.html' title='Multiple used in 34 places.'>blist</a>);
+<a name='L26'>  26 <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../S/17.html#L77' title='Defined at 77 in bidlist.c.'>bidlistsetmark</a>(<a href='../Y/17.html' title='Multiple used in 14 places.'>bidlist</a>* <a href='../Y/19.html' title='Multiple used in 34 places.'>blist</a>, <a href='../Y/18.html' title='Multiple used in 4 places.'>bidnode</a>* <a href='../Y/71.html' title='Multiple used in 21 places.'>node</a>);
+<a name='L27'>  27 
+<a name='L28'>  28 <font color='darkred'>#endif</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

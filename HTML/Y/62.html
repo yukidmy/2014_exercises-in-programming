@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>mobj</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/15.html#L8'>mobj</a>                8 enemy.c        static void onesteppm(movingobject* mobj){
+<a href='../S/15.html#L9'>mobj</a>                9 enemy.c          if(((mobj-&gt;cnt)/6)%4){
+<a href='../S/15.html#L10'>mobj</a>               10 enemy.c            mobj-&gt;pos.y = mobj-&gt;pos.y +mobj-&gt;vel.y;
+<a href='../S/15.html#L12'>mobj</a>               12 enemy.c            mobj-&gt;pos.y = mobj-&gt;pos.y -mobj-&gt;vel.y;
+<a href='../S/15.html#L14'>mobj</a>               14 enemy.c          mobj-&gt;cnt = (mobj-&gt;cnt +1)%48;
+<a href='../S/15.html#L17'>mobj</a>               17 enemy.c        static void dispa(movingobject* mobj){
+<a href='../S/15.html#L18'>mobj</a>               18 enemy.c          int l = (mobj-&gt;cnt/12)%2;
+<a href='../S/15.html#L19'>mobj</a>               19 enemy.c          putobject((mobj-&gt;obj)[l], mobj-&gt;id, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/15.html#L22'>mobj</a>               22 enemy.c        static int bomba(movingobject* mobj){
+<a href='../S/28.html#L8'>mobj</a>                8 event.c                        movingobject* mobj, char* name){
+<a href='../S/28.html#L14'>mobj</a>               14 event.c          ret-&gt;mobj = mobj;
+<a href='../S/9.html#L14'>mobj</a>               14 event.h          movingobject* mobj;
+<a href='../S/9.html#L19'>mobj</a>               19 event.h                        movingobject* mobj, char* name);
+<a href='../S/1.html#L30'>mobj</a>               30 gamemain.c     void dispm(movingobject* mobj){
+<a href='../S/1.html#L31'>mobj</a>               31 gamemain.c       putobject(*(mobj-&gt;obj), 0, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L24'>mobj</a>               24 gamemain2.c    void onestepb(movingobject* mobj){
+<a href='../S/19.html#L25'>mobj</a>               25 gamemain2.c      vec2add(&amp;(mobj-&gt;pos), &amp;(mobj-&gt;vel));
+<a href='../S/19.html#L28'>mobj</a>               28 gamemain2.c    void dispb(movingobject* mobj){
+<a href='../S/19.html#L29'>mobj</a>               29 gamemain2.c      putobject(*(mobj-&gt;obj), mobj-&gt;id, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L32'>mobj</a>               32 gamemain2.c    void dispm(movingobject* mobj){
+<a href='../S/19.html#L33'>mobj</a>               33 gamemain2.c      putobject(*(mobj-&gt;obj), 0, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L36'>mobj</a>               36 gamemain2.c    int bomba(movingobject* mobj){
+<a href='../S/19.html#L124'>mobj</a>              124 gamemain2.c            addmo(e-&gt;mobj, e-&gt;pos, e-&gt;vel);
+<a href='../S/18.html#L25'>mobj</a>               25 movingobject.c void deletemovingobject(movingobject* mobj){
+<a href='../S/18.html#L26'>mobj</a>               26 movingobject.c   free(mobj);
+<a href='../S/18.html#L29'>mobj</a>               29 movingobject.c void setinitposition(movingobject* mobj, vector2 pos){
+<a href='../S/18.html#L30'>mobj</a>               30 movingobject.c   mobj-&gt;pos = pos;
+<a href='../S/18.html#L33'>mobj</a>               33 movingobject.c void putmovingobject(movingobject* mobj){
+<a href='../S/18.html#L34'>mobj</a>               34 movingobject.c   mobj-&gt;display(mobj);
+<a href='../S/7.html#L25'>mobj</a>               25 movingobject.h void deletemovingobject(movingobject* mobj);
+<a href='../S/7.html#L26'>mobj</a>               26 movingobject.h void setinitposition(movingobject* mobj, vector2 pos);
+<a href='../S/7.html#L27'>mobj</a>               27 movingobject.h void putmovingobject(movingobject* mobj); 
+<a href='../S/8.html#L20'>mobj</a>               20 movingobjectmanager.c void addmo(movingobject* mobj, vector2 pos, vector2 vel){
+<a href='../S/8.html#L24'>mobj</a>               24 movingobjectmanager.c     *tmp = *mobj;
+<a href='../S/8.html#L41'>mobj</a>               41 movingobjectmanager.c   movingobject* mobj;
+<a href='../S/8.html#L48'>mobj</a>               48 movingobjectmanager.c     mobj =(movingobject*)(node-&gt;data);
+<a href='../S/8.html#L49'>mobj</a>               49 movingobjectmanager.c     mobj-&gt;id = num;
+<a href='../S/8.html#L50'>mobj</a>               50 movingobjectmanager.c     id = checkcollision(mobj-&gt;pos, mobj-&gt;currentobj);
+<a href='../S/8.html#L54'>mobj</a>               54 movingobjectmanager.c       if(mobj-&gt;bomb(mobj)){
+<a href='../S/8.html#L62'>mobj</a>               62 movingobjectmanager.c       putmovingobject(mobj);
+<a href='../S/8.html#L70'>mobj</a>               70 movingobjectmanager.c   movingobject* mobj;
+<a href='../S/8.html#L75'>mobj</a>               75 movingobjectmanager.c     mobj = (node-&gt;data);
+<a href='../S/8.html#L76'>mobj</a>               76 movingobjectmanager.c     mobj-&gt;onestep(mobj);
+<a href='../S/24.html#L7'>mobj</a>                7 movingobjectmanager.h void addmo(movingobject* mobj, vector2 pos, vector2 vel);
+</pre>
+</body>
+</html>

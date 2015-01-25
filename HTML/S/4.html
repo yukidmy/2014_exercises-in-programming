@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>gameio.h</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/gameio.h</h2>
+<i><font color='green'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2><a href='../J/9.html' title='Multiple included from 2 places.'>INCLUDED FROM</a></h2>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* gameio.h */</font></i>
+<a name='L2'>   2 
+<a name='L3'>   3 <font color='darkred'>#ifndef</font> <a href='../S/4.html#L4' title='Defined at 4 in gameio.h.'>_GAME_IO_H_</a>
+<a name='L4'>   4 <font color='darkred'>#define</font> <a href='../S/4.html#L3' title='Refered from 3 in gameio.h.'>_GAME_IO_H_</a>
+<a name='L5'>   5 
+<a name='L6'>   6 <i><font color='green'>/* store terminal environment </font></i>
+<a name='L7'>   7 <i><font color='green'>   This have to be called before</font></i>
+<a name='L8'>   8 <i><font color='green'>   other functions in this file!! */</font></i>
+<a name='L9'>   9 <b>void</b> <a href='../S/3.html#L28' title='Defined at 28 in gameio.c.'>gameioinit</a>(<b>void</b>);
+<a name='L10'>  10 
+<a name='L11'>  11 <i><font color='green'>/* read one character from keyboard */</font></i> 
+<a name='L12'>  12 <b>int</b> <a href='../S/3.html#L36' title='Defined at 36 in gameio.c.'>gameioread</a>(<b>void</b>);
+<a name='L13'>  13 
+<a name='L14'>  14 <i><font color='green'>/* recover terminal environment</font></i>
+<a name='L15'>  15 <i><font color='green'>   This have to be called before </font></i>
+<a name='L16'>  16 <i><font color='green'>   the end of your program!! */</font></i>
+<a name='L17'>  17 <b>void</b> <a href='../S/3.html#L45' title='Defined at 45 in gameio.c.'>gameiopost</a>(<b>void</b>);
+<a name='L18'>  18 
+<a name='L19'>  19 <i><font color='green'>/* clear terminal */</font></i>
+<a name='L20'>  20 <b>void</b> <a href='../S/3.html#L51' title='Defined at 51 in gameio.c.'>gameioclear</a>(<b>void</b>);
+<a name='L21'>  21 
+<a name='L22'>  22 <i><font color='green'>/* refresh terminal */</font></i>
+<a name='L23'>  23 <b>void</b> <a href='../S/3.html#L55' title='Defined at 55 in gameio.c.'>gameiorefresh</a>(<b>void</b>);
+<a name='L24'>  24 
+<a name='L25'>  25 <i><font color='green'>/* put character ch at x,y  */</font></i>
+<a name='L26'>  26 <b>void</b> <a href='../S/3.html#L59' title='Defined at 59 in gameio.c.'>gameioput</a>(<b>int</b> <a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>, <b>int</b> <a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>, <b>char</b> <a href='../Y/23.html' title='Multiple used in 3 places.'>ch</a>);
+<a name='L27'>  27 
+<a name='L28'>  28 <i><font color='green'>/* sleep t microseconds */</font></i>
+<a name='L29'>  29 <b>void</b> <a href='../S/3.html#L63' title='Defined at 63 in gameio.c.'>gameiousleep</a>(<b>int</b> <a href='../Y/95.html' title='Multiple used in 3 places.'>t</a>);
+<a name='L30'>  30 
+<a name='L31'>  31 <font color='darkred'>#endif</font>
+<a name='L32'>  32 
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

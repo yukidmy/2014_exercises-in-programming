@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>ev</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/25.html#L15'>ev</a>                 15 content.h        struct event* ev;
+<a href='../S/28.html#L20'>ev</a>                 20 event.c          printf("%07d,",con-&gt;ev-&gt;time);
+<a href='../S/28.html#L21'>ev</a>                 21 event.c          printf("%f, %f, ",con-&gt;ev-&gt;pos.x, con-&gt;ev-&gt;pos.y);
+<a href='../S/28.html#L22'>ev</a>                 22 event.c          printf("%f, %f, ",con-&gt;ev-&gt;vel.x, con-&gt;ev-&gt;vel.y);
+<a href='../S/28.html#L23'>ev</a>                 23 event.c          printf("%s\n",con-&gt;ev-&gt;name);
+<a href='../S/19.html#L19'>ev</a>                 19 gamemain2.c    event* ev[EVNUM];
+<a href='../S/19.html#L53'>ev</a>                 53 gamemain2.c      ev[0] = newevent(3, makevector2(30,2),makevector2(0,0.1), mobjp[0],"plus0");
+<a href='../S/19.html#L54'>ev</a>                 54 gamemain2.c      ev[1] = newevent(15, makevector2(10,2),makevector2(0,0.1), mobjp[0],"plus1");
+<a href='../S/19.html#L55'>ev</a>                 55 gamemain2.c      ev[2] = newevent(20, makevector2(20,5),makevector2(0,0.1), mobjp[0],"plus2");
+<a href='../S/19.html#L56'>ev</a>                 56 gamemain2.c      ev[3] = newevent(25, makevector2(10,2),makevector2(0,0.1), mobjp[0],"plus3");
+<a href='../S/19.html#L57'>ev</a>                 57 gamemain2.c      ev[4] = newevent(25, makevector2(25,3),makevector2(0,0.3), mobjp[0],"plus4");
+<a href='../S/19.html#L58'>ev</a>                 58 gamemain2.c      ev[5] = newevent(1000000, 
+<a href='../S/19.html#L61'>ev</a>                 61 gamemain2.c        addevent(ev[i]);
+<a href='../S/11.html#L14'>ev</a>                 14 scenario.c     void addevent(event* ev){
+<a href='../S/11.html#L15'>ev</a>                 15 scenario.c       bidlistadd(scenario, ev);
+<a href='../S/23.html#L9'>ev</a>                  9 scenario.h     void addevent(event* ev);
+</pre>
+</body>
+</html>

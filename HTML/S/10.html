@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>vector2.c</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/vector2.c</h2>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L4'>[^]</a><a href='#L35'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L4' title='Defined at 4.'>makevector2</a>
+<li><a href='#L11' title='Defined at 11.'>vec2plus</a>
+<li><a href='#L18' title='Defined at 18.'>vec2add</a>
+<li><a href='#L23' title='Defined at 23.'>vec2minus</a>
+<li><a href='#L30' title='Defined at 30.'>vec2subtract</a>
+<li><a href='#L35' title='Defined at 35.'>vec2dot</a>
+</ol>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* vector2.c */</font></i>
+<a name='L2'>   2 <font color='darkred'>#include</font>&lt;<a href='12.html'>vector2.h</a>&gt;
+<a name='L3'>   3 
+<a name='L4'>   4 <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../R/65.html' title='Multiple refered from 8 places.'>makevector2</a>(<b>double</b> <a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>, <b>double</b> <a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>)<font color='red'>{</font>
+<a name='L5'>   5   <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>;
+<a name='L6'>   6   <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a> = <a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>;
+<a name='L7'>   7   <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> = <a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L8'>   8   <b>return</b> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>;
+<a name='L9'>   9 <font color='red'>}</font>
+<a name='L10'>  10 
+<a name='L11'>  11 <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../S/12.html#L10' title='Refered from 10 in vector2.h.'>vec2plus</a>(<a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>, <a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>)<font color='red'>{</font>
+<a name='L12'>  12   <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>;
+<a name='L13'>  13   <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a> = <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>+<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>;
+<a name='L14'>  14   <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> = <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>+<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L15'>  15   <b>return</b> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>;
+<a name='L16'>  16 <font color='red'>}</font>
+<a name='L17'>  17 
+<a name='L18'>  18 <b>void</b> <a href='../R/91.html' title='Multiple refered from 2 places.'>vec2add</a>(<a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a>* <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>, <a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a>* <a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>)<font color='red'>{</font>
+<a name='L19'>  19   <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>-&gt;<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a> = <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>-&gt;<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>+<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>-&gt;<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>;
+<a name='L20'>  20   <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>-&gt;<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> = <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>-&gt;<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>+<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>-&gt;<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L21'>  21 <font color='red'>}</font>
+<a name='L22'>  22 
+<a name='L23'>  23 <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../S/12.html#L12' title='Refered from 12 in vector2.h.'>vec2minus</a>(<a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>, <a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>)<font color='red'>{</font>
+<a name='L24'>  24   <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>;
+<a name='L25'>  25   <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a> = <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>-<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>;
+<a name='L26'>  26   <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> = <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>-<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L27'>  27   <b>return</b> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>;
+<a name='L28'>  28 <font color='red'>}</font>
+<a name='L29'>  29 
+<a name='L30'>  30 <b>void</b> <a href='../S/12.html#L13' title='Refered from 13 in vector2.h.'>vec2subtract</a>(<a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a>* <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>, <a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a>* <a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>)<font color='red'>{</font>
+<a name='L31'>  31   <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>-&gt;<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a> = <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>-&gt;<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>-<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>-&gt;<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>;
+<a name='L32'>  32   <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>-&gt;<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> = <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>-&gt;<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>-<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>-&gt;<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L33'>  33 <font color='red'>}</font>
+<a name='L34'>  34 
+<a name='L35'>  35 <b>double</b> <a href='../S/12.html#L14' title='Refered from 14 in vector2.h.'>vec2dot</a>(<a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>, <a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>)<font color='red'>{</font>
+<a name='L36'>  36   <b>return</b> <a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>*<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>+<a href='../Y/15.html' title='Multiple used in 19 places.'>a</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>*<a href='../Y/16.html' title='Multiple used in 19 places.'>b</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L37'>  37 <font color='red'>}</font>
+<a name='L38'>  38 
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L4'>[^]</a><a href='#L35'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

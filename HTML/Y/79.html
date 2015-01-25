@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>objp</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/15.html#L6'>objp</a>                6 enemy.c        static object* objp[2];
+<a href='../S/15.html#L27'>objp</a>               27 enemy.c          objp[0] = newobject(3,3," : ::: : ");
+<a href='../S/15.html#L28'>objp</a>               28 enemy.c          objp[1] = newobject(3,3," : :*: : ");
+<a href='../S/15.html#L29'>objp</a>               29 enemy.c          return newmovingobject(&amp;objp[0], onesteppm, dispa, bomba, "enemy");
+<a href='../S/1.html#L15'>objp</a>               15 gamemain.c     object* objp[OBJNUM];
+<a href='../S/1.html#L23'>objp</a>               23 gamemain.c       objp[0] = newobject(3,2," ^ =x=");
+<a href='../S/1.html#L27'>objp</a>               27 gamemain.c       mobjp[0] = newmovingobject(&amp;objp[0], NULL, NULL, NULL, "me");
+<a href='../S/1.html#L94'>objp</a>               94 gamemain.c         if(checkcollision(mypos, objp[0])!=NONOBJ){
+<a href='../S/19.html#L17'>objp</a>               17 gamemain2.c    object* objp[OBJNUM];
+<a href='../S/19.html#L41'>objp</a>               41 gamemain2.c      objp[0] = newobject(1,1,"x");
+<a href='../S/19.html#L42'>objp</a>               42 gamemain2.c      objp[1] = newobject(3,2," ^ =x=");
+<a href='../S/19.html#L47'>objp</a>               47 gamemain2.c      mobjp[1] = newmovingobject(&amp;objp[0], onestepb, dispb, bomba, "bullet");
+<a href='../S/19.html#L48'>objp</a>               48 gamemain2.c      mobjp[2] = newmovingobject(&amp;objp[1], NULL, dispm, bomba, "me");
+<a href='../S/19.html#L137'>objp</a>              137 gamemain2.c        if(checkcollision(mypos, objp[1])!=NONOBJ){
+</pre>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>content.h</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/content.h</h2>
+<i><font color='green'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2><a href='../J/3.html' title='Multiple included from 2 places.'>INCLUDED FROM</a></h2>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* content.h */</font></i>
+<a name='L2'>   2 <font color='darkred'>#ifndef</font> <a href='../S/25.html#L3' title='Defined at 3 in content.h.'>_CONTENT_H_</a>
+<a name='L3'>   3 <font color='darkred'>#define</font> <a href='../S/25.html#L2' title='Refered from 2 in content.h.'>_CONTENT_H_</a>
+<a name='L4'>   4 
+<a name='L5'>   5 <b>union</b> <a href='../D/38.html' title='Multiple defined in 2 places.'>content</a>;
+<a name='L6'>   6 
+<a name='L7'>   7 <b>typedef</b> <b>struct</b> <a href='../R/53.html' title='Multiple refered from 2 places.'>general</a><font color='red'>{</font>
+<a name='L8'>   8   <b>void</b>(*<a href='../Y/84.html' title='Multiple used in 2 places.'>print</a>)(<b>union</b> <a href='../D/38.html' title='Multiple defined in 2 places.'>content</a>*);
+<a name='L9'>   9 <font color='red'>}</font> <a href='../R/53.html' title='Multiple refered from 2 places.'>general</a>;
+<a name='L10'>  10 
+<a name='L11'>  11 <b>struct</b> <a href='../D/44.html' title='Multiple defined in 2 places.'>event</a>;
+<a name='L12'>  12 
+<a name='L13'>  13 <b>typedef</b> <b>union</b> <a href='../R/38.html' title='Multiple refered from 2 places.'>content</a><font color='red'>{</font>
+<a name='L14'>  14   <b>struct</b> <a href='../D/53.html' title='Multiple defined in 2 places.'>general</a>* wc;
+<a name='L15'>  15   <b>struct</b> <a href='../D/44.html' title='Multiple defined in 2 places.'>event</a>* <a href='../Y/39.html' title='Multiple used in 16 places.'>ev</a>;
+<a name='L16'>  16 <font color='red'>}</font> <a href='../R/38.html' title='Multiple refered from 2 places.'>content</a>;
+<a name='L17'>  17 
+<a name='L18'>  18 <b>void</b> <a href='../S/28.html#L19' title='Defined at 19 in event.c.'>printevent</a>(<a href='../Y/29.html' title='Multiple used in 2 places.'>content</a>* <a href='../Y/28.html' title='Multiple used in 6 places.'>con</a>);
+<a name='L19'>  19 
+<a name='L20'>  20 <font color='darkred'>#endif</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>ret</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/17.html#L7'>ret</a>                 7 bidlist.c        bidlist* ret = (bidlist*)malloc(sizeof(bidlist));
+<a href='../S/17.html#L8'>ret</a>                 8 bidlist.c        ret-&gt;head = NULL;
+<a href='../S/17.html#L9'>ret</a>                 9 bidlist.c        ret-&gt;tail = NULL;
+<a href='../S/17.html#L10'>ret</a>                10 bidlist.c        ret-&gt;mark = NULL;
+<a href='../S/17.html#L11'>ret</a>                11 bidlist.c        ret-&gt;count =0;
+<a href='../S/17.html#L12'>ret</a>                12 bidlist.c        return ret;
+<a href='../S/17.html#L70'>ret</a>                70 bidlist.c        bidnode* ret = blist-&gt;mark;
+<a href='../S/17.html#L71'>ret</a>                71 bidlist.c        if(ret != NULL){
+<a href='../S/17.html#L74'>ret</a>                74 bidlist.c        return ret;
+<a href='../S/28.html#L9'>ret</a>                 9 event.c          event* ret = (event*) malloc(sizeof(event));
+<a href='../S/28.html#L10'>ret</a>                10 event.c          ret-&gt;gene.print = printevent;
+<a href='../S/28.html#L11'>ret</a>                11 event.c          ret-&gt;time = time;
+<a href='../S/28.html#L12'>ret</a>                12 event.c          ret-&gt;pos = pos;
+<a href='../S/28.html#L13'>ret</a>                13 event.c          ret-&gt;vel = vel;
+<a href='../S/28.html#L14'>ret</a>                14 event.c          ret-&gt;mobj = mobj;
+<a href='../S/28.html#L15'>ret</a>                15 event.c          ret-&gt;name =  name;
+<a href='../S/28.html#L16'>ret</a>                16 event.c          return ret;
+<a href='../S/3.html#L37'>ret</a>                37 gameio.c         int ret = getch();
+<a href='../S/3.html#L38'>ret</a>                38 gameio.c         if (ret &lt;=0){
+<a href='../S/3.html#L41'>ret</a>                41 gameio.c           return ret;
+<a href='../S/1.html#L41'>ret</a>                41 gamemain.c     void getstate(vector2* ret, int* isfire){
+<a href='../S/1.html#L65'>ret</a>                65 gamemain.c       *ret = pos;
+<a href='../S/19.html#L77'>ret</a>                77 gamemain2.c    void getstate(vector2* ret, int* isfire){
+<a href='../S/19.html#L101'>ret</a>               101 gamemain2.c      *ret = pos;
+<a href='../S/18.html#L13'>ret</a>                13 movingobject.c   movingobject* ret = (movingobject*)malloc(sizeof(movingobject));
+<a href='../S/18.html#L14'>ret</a>                14 movingobject.c   ret-&gt;obj = shape;
+<a href='../S/18.html#L15'>ret</a>                15 movingobject.c   ret-&gt;currentobj = *shape;
+<a href='../S/18.html#L16'>ret</a>                16 movingobject.c   ret-&gt;onestep = onestep;
+<a href='../S/18.html#L17'>ret</a>                17 movingobject.c   ret-&gt;display = display;
+<a href='../S/18.html#L18'>ret</a>                18 movingobject.c   ret-&gt;bomb = bomb;
+<a href='../S/18.html#L19'>ret</a>                19 movingobject.c   ret-&gt;cnt = 0;
+<a href='../S/18.html#L20'>ret</a>                20 movingobject.c   ret-&gt;flag = 0;
+<a href='../S/18.html#L21'>ret</a>                21 movingobject.c   ret-&gt;name = name;
+<a href='../S/18.html#L22'>ret</a>                22 movingobject.c   return ret;
+<a href='../S/22.html#L10'>ret</a>                10 object.c         object* ret = (object*)malloc(sizeof(object));
+<a href='../S/22.html#L11'>ret</a>                11 object.c         ret-&gt;size.x = w;
+<a href='../S/22.html#L12'>ret</a>                12 object.c         ret-&gt;size.y = h;
+<a href='../S/22.html#L13'>ret</a>                13 object.c         ret-&gt;shape = (char*)malloc(sizeof(char)*w*h);
+<a href='../S/22.html#L14'>ret</a>                14 object.c         strncpy(ret-&gt;shape, shape, w*h);
+<a href='../S/22.html#L15'>ret</a>                15 object.c         return ret;
+<a href='../S/11.html#L39'>ret</a>                39 scenario.c       event* ret = NULL;
+<a href='../S/11.html#L42'>ret</a>                42 scenario.c         ret = (event*)(node-&gt;data);
+<a href='../S/11.html#L44'>ret</a>                44 scenario.c       return ret;
+<a href='../S/10.html#L5'>ret</a>                 5 vector2.c        vector2 ret;
+<a href='../S/10.html#L6'>ret</a>                 6 vector2.c        ret.x = x;
+<a href='../S/10.html#L7'>ret</a>                 7 vector2.c        ret.y = y;
+<a href='../S/10.html#L8'>ret</a>                 8 vector2.c        return ret;
+<a href='../S/10.html#L12'>ret</a>                12 vector2.c        vector2 ret;
+<a href='../S/10.html#L13'>ret</a>                13 vector2.c        ret.x = a.x+b.x;
+<a href='../S/10.html#L14'>ret</a>                14 vector2.c        ret.y = a.y+b.y;
+<a href='../S/10.html#L15'>ret</a>                15 vector2.c        return ret;
+<a href='../S/10.html#L24'>ret</a>                24 vector2.c        vector2 ret;
+<a href='../S/10.html#L25'>ret</a>                25 vector2.c        ret.x = a.x-b.x;
+<a href='../S/10.html#L26'>ret</a>                26 vector2.c        ret.y = a.y-b.y;
+<a href='../S/10.html#L27'>ret</a>                27 vector2.c        return ret;
+</pre>
+</body>
+</html>

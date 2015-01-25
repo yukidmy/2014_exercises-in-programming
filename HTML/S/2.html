@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>walls.c</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/walls.c</h2>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L88'>[^]</a><a href='#L105'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L88' title='Defined at 88.'>initwalls</a>
+<li><a href='#L101' title='Defined at 101.'>scrollwall</a>
+<li><a href='#L105' title='Defined at 105.'>putwalls</a>
+</ol>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* walls.c */</font></i>
+<a name='L2'>   2 
+<a name='L3'>   3 <font color='darkred'>#include</font> &lt;string.h&gt;
+<a name='L4'>   4 <font color='darkred'>#include</font> &lt;<a href='16.html'>walls.h</a>&gt;
+<a name='L5'>   5 <font color='darkred'>#include</font> &lt;<a href='5.html'>screen.h</a>&gt;
+<a name='L6'>   6 
+<a name='L7'>   7 <font color='darkred'>#define</font> <a href='../R/9.html' title='Multiple refered from 2 places.'>WALLLOOP</a> 40
+<a name='L8'>   8 <font color='darkred'>#define</font> <a href='../R/8.html' title='Multiple refered from 3 places.'>UNITS</a> 8
+<a name='L9'>   9 <font color='darkred'>#define</font> <a href='../R/7.html' title='Multiple refered from 7 places.'>UNITLINES</a>  7
+<a name='L10'>  10 
+<a name='L11'>  11 <b>static</b> <b>int</b> <a href='../Y/30.html' title='Multiple used in 15 places.'>count</a> = 0;
+<a name='L12'>  12 
+<a name='L13'>  13 <b>static</b> <b>char</b> <a href='../Y/106.html' title='Multiple used in 3 places.'>walldata</a>[<a href='../S/2.html#L8' title='Defined at 8 in walls.c.'>UNITS</a>*<a href='../S/2.html#L9' title='Defined at 9 in walls.c.'>UNITLINES</a>][<a href='../S/16.html#L6' title='Defined at 6 in walls.h.'>WIDTH</a>+1] =<font color='red'>{</font>
+<a name='L14'>  14   "OOOOO                             OOOOOO",
+<a name='L15'>  15   "OOOOOO       O          O        OOOOOOO",
+<a name='L16'>  16   "OOOOOO      OOO        OOO       OOOOOOO",
+<a name='L17'>  17   "OOOOOO     OOOO       OOOOO      OOOOOOO",
+<a name='L18'>  18   "OOOOOO      OOO       OOOO      OOOOOOOO",
+<a name='L19'>  19   "OOOOOOO      OO        O       OOOOOOOOO",
+<a name='L20'>  20   "OOOOOOOO                      OOOOOOOOOO",
+<a name='L21'>  21   <i><font color='green'>/*   ,    |    ,    |    ,    |    ,    */</font></i>
+<a name='L22'>  22   "OOOOOOOOOO                  OOOOOOOOOOOO",
+<a name='L23'>  23   "OOOOOOOOO                  OOOOOOOOOOOOO",
+<a name='L24'>  24   "OOOOOOO                   OOOOOOOOOOOOOO",
+<a name='L25'>  25   "OOOO                     OOOOOOOOOOOOOOO",
+<a name='L26'>  26   "OOO                     OOOOOOOOOOOOOOOO",
+<a name='L27'>  27   "OOO                   OOOOOOOOOOOOOOOOOO",
+<a name='L28'>  28   "OO                   OOOOOOOOOOOOOOOOOOO",
+<a name='L29'>  29   <i><font color='green'>/*   ,    |    ,    |    ,    |    ,    */</font></i>
+<a name='L30'>  30   "OO                    OOOOOOOOOOOOOOOOOO",
+<a name='L31'>  31   "OOO                   OOOOOOOOOOOOOOOOOO",
+<a name='L32'>  32   "OOO                    OOOOOOOOOOOOOOOOO",
+<a name='L33'>  33   "OOOO                     OOOOOOOOOOOOOOO",
+<a name='L34'>  34   "OOOOOOO                    OOOOOOOOOOOOO",
+<a name='L35'>  35   "OOOOOOOOO                    OOOOOOOOOOO",
+<a name='L36'>  36   "OOOOOOOOOOO                   OOOOOOOOOO",
+<a name='L37'>  37   <i><font color='green'>/*   ,    |    ,    |    ,    |    ,    */</font></i>
+<a name='L38'>  38   "OOOOOOOOOOOOOO                 OOOOOOOOO",
+<a name='L39'>  39   "OOOOOOOOOOOOOOOO                OOOOOOOO",
+<a name='L40'>  40   "OOOOOOOOOOOOOOOOOO               OOOOOOO",
+<a name='L41'>  41   "OOOOOOOOOOOOOOOOOOOO              OOOOOO",
+<a name='L42'>  42   "OOOOOOOOOOOOOOOOOOOOO               OOOO",
+<a name='L43'>  43   "OOOOOOOOOOOOOOOOOOOOOO               OOO",
+<a name='L44'>  44   "OOOOOOOOOOOOOOOOOOOOOOO               OO",
+<a name='L45'>  45   <i><font color='green'>/*   ,    |    ,    |    ,    |    ,    */</font></i>
+<a name='L46'>  46   "OOOOOOOOOOOOOOOOOOOOO                 OO",
+<a name='L47'>  47   "OOOOOOOOOOOOOOOOOOOO                 OOO",
+<a name='L48'>  48   "OOOOOOOOOOOOOOOOOOO                 OOOO",
+<a name='L49'>  49   "OOOOOOOOOOOOOOOOO                  OOOOO",
+<a name='L50'>  50   "OOOOOOOOOOOOOO                    OOOOOO",
+<a name='L51'>  51   "OOOOOOOOOOOO                    OOOOOOOO",
+<a name='L52'>  52   "OOOOOOOOO                      OOOOOOOOO",
+<a name='L53'>  53   <i><font color='green'>/*   ,    |    ,    |    ,    |    ,    */</font></i>
+<a name='L54'>  54   "OOOOOOO            OOOOO        OOOOOOOO",   
+<a name='L55'>  55   "OOOOOO          OOOOOOOOOO        OOOOOO",
+<a name='L56'>  56   "OOOOOO         OOOOOOOOOOOO        OOOOO",
+<a name='L57'>  57   "OOOOOO         OOOOOOOOOOOO          OOO",   
+<a name='L58'>  58   "OOOOOOO        OOOOOOOOOOO          OOOO",   
+<a name='L59'>  59   "OOOOOOO         OOOOOOOOO         OOOOOO",   
+<a name='L60'>  60   "OOOOOOOO          OOOOO          OOOOOOO",   
+<a name='L61'>  61   <i><font color='green'>/*   ,    |    ,    |    ,    |    ,    */</font></i>
+<a name='L62'>  62   "OOOOOO                            OOOOOO",   
+<a name='L63'>  63   "OOOOO       OO            OO       OOOOO",   
+<a name='L64'>  64   "OOOO       OOO     OO     OOO       OOOO",   
+<a name='L65'>  65   "OOOO        O     OOOO     O        OOOO",   
+<a name='L66'>  66   "OOOOO              OO              OOOOO",   
+<a name='L67'>  67   "OOOOO                              OOOOO",   
+<a name='L68'>  68   "OOOOO                              OOOOO",   
+<a name='L69'>  69   <i><font color='green'>/*   ,    |    ,    |    ,    |    ,    */</font></i>
+<a name='L70'>  70   "OOOOO                              OOOOO",   
+<a name='L71'>  71   "OOOOO                              OOOOO",   
+<a name='L72'>  72   "OOOOO      O                O      OOOOO",   
+<a name='L73'>  73   "OOOOO      O    OO    OO    O      OOOOO",   
+<a name='L74'>  74   "OOOOO       O   O      O   O       OOOOO",   
+<a name='L75'>  75   "OOOOOO                            OOOOOO",   
+<a name='L76'>  76   "OOOOOOO                          OOOOOOO",   
+<a name='L77'>  77   <i><font color='green'>/*   ,    |    ,    |    ,    |    ,    */</font></i>
+<a name='L78'>  78 <font color='red'>}</font>;
+<a name='L79'>  79 
+<a name='L80'>  80 <b>static</b> <b>char</b> <a href='../Y/27.html' title='Multiple used in 4 places.'>collisioncheckdata</a>[<a href='../S/2.html#L8' title='Defined at 8 in walls.c.'>UNITS</a>*<a href='../S/2.html#L9' title='Defined at 9 in walls.c.'>UNITLINES</a>][<a href='../S/16.html#L6' title='Defined at 6 in walls.h.'>WIDTH</a>];
+<a name='L81'>  81 
+<a name='L82'>  82 <b>static</b> <b>int</b> <a href='../Y/107.html' title='Multiple used in 3 places.'>wallorder</a>[<a href='../S/2.html#L7' title='Defined at 7 in walls.c.'>WALLLOOP</a>] =<font color='red'>{</font>
+<a name='L83'>  83   0,1,2,3,4, 5,6,7,6,7, 0,1,2,3,4, 5,6,7,6,7,
+<a name='L84'>  84   0,1,2,1,2, 7,6,7,6,7, 0,3,4,3,4, 5,5,5,0,5,
+<a name='L85'>  85 <font color='red'>}</font>;
+<a name='L86'>  86 
+<a name='L87'>  87 
+<a name='L88'>  88 <b>void</b> <a href='../R/64.html' title='Multiple refered from 3 places.'>initwalls</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L89'>  89   <b>int</b> <a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>,<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>;
+<a name='L90'>  90   <b>for</b>(<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>=0;<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>&lt;<a href='../S/2.html#L8' title='Defined at 8 in walls.c.'>UNITS</a>*<a href='../S/2.html#L9' title='Defined at 9 in walls.c.'>UNITLINES</a>;<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>++)<font color='red'>{</font>
+<a name='L91'>  91     <b>for</b>(<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>=0;<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>&lt;<a href='../S/16.html#L6' title='Defined at 6 in walls.h.'>WIDTH</a>;<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>++)<font color='red'>{</font>
+<a name='L92'>  92       <b>if</b>(<a href='../Y/106.html' title='Multiple used in 3 places.'>walldata</a>[<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>][<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>] ==' ')<font color='red'>{</font> 
+<a name='L93'>  93         <a href='../Y/27.html' title='Multiple used in 4 places.'>collisioncheckdata</a>[<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>][<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>] = <a href='../Y/5.html' title='Multiple used in 7 places.'>NONOBJ</a>;<i><font color='green'>//non object</font></i>
+<a name='L94'>  94       <font color='red'>}</font><b>else</b><font color='red'>{</font>
+<a name='L95'>  95         <a href='../Y/27.html' title='Multiple used in 4 places.'>collisioncheckdata</a>[<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>][<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>] = <a href='../Y/13.html' title='Multiple used in 3 places.'>WALL</a>;<i><font color='green'>//wall</font></i>
+<a name='L96'>  96       <font color='red'>}</font>
+<a name='L97'>  97     <font color='red'>}</font>
+<a name='L98'>  98   <font color='red'>}</font>
+<a name='L99'>  99 <font color='red'>}</font>
+<a name='L100'> 100 
+<a name='L101'> 101 <b>void</b> <a href='../R/84.html' title='Multiple refered from 3 places.'>scrollwall</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L102'> 102   <a href='../Y/30.html' title='Multiple used in 15 places.'>count</a>++;
+<a name='L103'> 103 <font color='red'>}</font>
+<a name='L104'> 104 
+<a name='L105'> 105 <b>void</b> <a href='../R/81.html' title='Multiple refered from 3 places.'>putwalls</a>(<b>int</b> <a href='../Y/57.html' title='Multiple used in 6 places.'>lines</a>)<font color='red'>{</font>
+<a name='L106'> 106   <b>int</b> <a href='../Y/100.html' title='Multiple used in 4 places.'>unit</a>,<a href='../Y/58.html' title='Multiple used in 4 places.'>lline</a>;
+<a name='L107'> 107   <b>int</b> <a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>,<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>;
+<a name='L108'> 108   <b>for</b> (<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>=<a href='../Y/57.html' title='Multiple used in 6 places.'>lines</a>;<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>&gt;0;<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>--)<font color='red'>{</font>
+<a name='L109'> 109     <a href='../Y/100.html' title='Multiple used in 4 places.'>unit</a> = ((<a href='../Y/30.html' title='Multiple used in 15 places.'>count</a>+<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>) / <a href='../S/2.html#L9' title='Defined at 9 in walls.c.'>UNITLINES</a>) % <a href='../S/2.html#L7' title='Defined at 7 in walls.c.'>WALLLOOP</a>; 
+<a name='L110'> 110     <a href='../Y/58.html' title='Multiple used in 4 places.'>lline</a> = ((<a href='../Y/30.html' title='Multiple used in 15 places.'>count</a>+<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>) % <a href='../S/2.html#L9' title='Defined at 9 in walls.c.'>UNITLINES</a>); 
+<a name='L111'> 111     <b>for</b>(<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>=0;<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>&lt;<a href='../S/16.html#L6' title='Defined at 6 in walls.h.'>WIDTH</a>;<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>++)<font color='red'>{</font>
+<a name='L112'> 112       <a href='../S/6.html#L23' title='Defined at 23 in screen.c.'>putdata</a>(<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>,<a href='../Y/57.html' title='Multiple used in 6 places.'>lines</a>-<a href='../Y/50.html' title='Multiple used in 20 places.'>i</a>,<a href='../Y/106.html' title='Multiple used in 3 places.'>walldata</a>[<a href='../Y/107.html' title='Multiple used in 3 places.'>wallorder</a>[<a href='../Y/100.html' title='Multiple used in 4 places.'>unit</a>]*<a href='../S/2.html#L9' title='Defined at 9 in walls.c.'>UNITLINES</a>+<a href='../Y/58.html' title='Multiple used in 4 places.'>lline</a>][<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>],
+<a name='L113'> 113               <a href='../Y/27.html' title='Multiple used in 4 places.'>collisioncheckdata</a>[<a href='../Y/107.html' title='Multiple used in 3 places.'>wallorder</a>[<a href='../Y/100.html' title='Multiple used in 4 places.'>unit</a>]*<a href='../S/2.html#L9' title='Defined at 9 in walls.c.'>UNITLINES</a>+<a href='../Y/58.html' title='Multiple used in 4 places.'>lline</a>][<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>]);
+<a name='L114'> 114     <font color='red'>}</font>
+<a name='L115'> 115   <font color='red'>}</font>
+<a name='L116'> 116   <b>for</b>(<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>=0;<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>&lt;<a href='../S/16.html#L6' title='Defined at 6 in walls.h.'>WIDTH</a>;<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>++)<font color='red'>{</font>
+<a name='L117'> 117     <a href='../S/6.html#L23' title='Defined at 23 in screen.c.'>putdata</a>(<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>,0,'+',<a href='../Y/1.html' title='Multiple used in 7 places.'>BORDER</a>);
+<a name='L118'> 118     <a href='../S/6.html#L23' title='Defined at 23 in screen.c.'>putdata</a>(<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>,<a href='../Y/57.html' title='Multiple used in 6 places.'>lines</a>-1,'+',<a href='../Y/1.html' title='Multiple used in 7 places.'>BORDER</a>);
+<a name='L119'> 119   <font color='red'>}</font>            
+<a name='L120'> 120   <b>for</b>(<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>=0;<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>&lt;<a href='../Y/57.html' title='Multiple used in 6 places.'>lines</a>;<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>++)<font color='red'>{</font>
+<a name='L121'> 121     <a href='../S/6.html#L23' title='Defined at 23 in screen.c.'>putdata</a>(0,<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>,'+',<a href='../Y/1.html' title='Multiple used in 7 places.'>BORDER</a>);
+<a name='L122'> 122     <a href='../S/6.html#L23' title='Defined at 23 in screen.c.'>putdata</a>(<a href='../S/16.html#L6' title='Defined at 6 in walls.h.'>WIDTH</a>-1,<a href='../Y/55.html' title='Multiple used in 19 places.'>j</a>,'+',<a href='../Y/1.html' title='Multiple used in 7 places.'>BORDER</a>);
+<a name='L123'> 123   <font color='red'>}</font>            
+<a name='L124'> 124 <font color='red'>}</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L88'>[^]</a><a href='#L105'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

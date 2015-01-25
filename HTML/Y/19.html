@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>blist</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/17.html#L15'>blist</a>              15 bidlist.c      int bidlistadd(bidlist* blist, void* data){
+<a href='../S/17.html#L18'>blist</a>              18 bidlist.c        newnode-&gt;prev = blist-&gt;tail; 
+<a href='../S/17.html#L20'>blist</a>              20 bidlist.c        if(blist-&gt;tail != NULL){
+<a href='../S/17.html#L21'>blist</a>              21 bidlist.c          blist-&gt;tail-&gt;next = newnode;
+<a href='../S/17.html#L23'>blist</a>              23 bidlist.c        blist-&gt;tail = newnode;
+<a href='../S/17.html#L24'>blist</a>              24 bidlist.c        if(blist-&gt;head == NULL){
+<a href='../S/17.html#L25'>blist</a>              25 bidlist.c          blist-&gt;head = newnode;
+<a href='../S/17.html#L27'>blist</a>              27 bidlist.c        blist-&gt;count++;
+<a href='../S/17.html#L28'>blist</a>              28 bidlist.c        return blist-&gt;count;
+<a href='../S/17.html#L31'>blist</a>              31 bidlist.c      int bidlistremove(bidlist* blist, bidnode* node){
+<a href='../S/17.html#L34'>blist</a>              34 bidlist.c        if(blist-&gt;mark == node){
+<a href='../S/17.html#L35'>blist</a>              35 bidlist.c          blist-&gt;mark = node-&gt;next;
+<a href='../S/17.html#L40'>blist</a>              40 bidlist.c          blist-&gt;tail = prev;
+<a href='../S/17.html#L45'>blist</a>              45 bidlist.c          blist-&gt;head = next;
+<a href='../S/17.html#L48'>blist</a>              48 bidlist.c        blist-&gt;count--;
+<a href='../S/17.html#L49'>blist</a>              49 bidlist.c        return blist-&gt;count;
+<a href='../S/17.html#L52'>blist</a>              52 bidlist.c      int bidlistcount(bidlist* blist){
+<a href='../S/17.html#L53'>blist</a>              53 bidlist.c        return blist-&gt;count;
+<a href='../S/17.html#L56'>blist</a>              56 bidlist.c      bidnode* bidlistget(bidlist* blist, int num){
+<a href='../S/17.html#L58'>blist</a>              58 bidlist.c        bidnode* point = blist-&gt;head;
+<a href='../S/17.html#L65'>blist</a>              65 bidlist.c      void bidlistreset(bidlist* blist){
+<a href='../S/17.html#L66'>blist</a>              66 bidlist.c        blist-&gt;mark = blist-&gt; head;
+<a href='../S/17.html#L69'>blist</a>              69 bidlist.c      bidnode* bidlistnext(bidlist* blist){
+<a href='../S/17.html#L70'>blist</a>              70 bidlist.c        bidnode* ret = blist-&gt;mark;
+<a href='../S/17.html#L72'>blist</a>              72 bidlist.c          blist-&gt;mark = blist-&gt;mark-&gt;next;
+<a href='../S/17.html#L77'>blist</a>              77 bidlist.c      bidnode* bidlistsetmark(bidlist* blist, bidnode* node){
+<a href='../S/17.html#L78'>blist</a>              78 bidlist.c        blist-&gt;mark = node;
+<a href='../S/21.html#L20'>blist</a>              20 bidlist.h      int bidlistadd(bidlist* blist, void* data);
+<a href='../S/21.html#L21'>blist</a>              21 bidlist.h      int bidlistremove(bidlist* blist, bidnode* node);
+<a href='../S/21.html#L22'>blist</a>              22 bidlist.h      int bidlistcount(bidlist* blist);
+<a href='../S/21.html#L23'>blist</a>              23 bidlist.h      bidnode* bidlistget(bidlist* blist, int num);
+<a href='../S/21.html#L24'>blist</a>              24 bidlist.h      void bidlistreset(bidlist* blist);
+<a href='../S/21.html#L25'>blist</a>              25 bidlist.h      bidnode* bidlistnext(bidlist* blist);
+<a href='../S/21.html#L26'>blist</a>              26 bidlist.h      bidnode* bidlistsetmark(bidlist* blist, bidnode* node);
+</pre>
+</body>
+</html>

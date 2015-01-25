@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>log.c</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/log.c</h2>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L6'>[^]</a><a href='#L10'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L6' title='Defined at 6.'>initlog</a>
+<li><a href='#L10' title='Defined at 10.'>closelog</a>
+</ol>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* log.c */</font></i>
+<a name='L2'>   2 <font color='darkred'>#include</font>&lt;<a href='13.html'>log.h</a>&gt;
+<a name='L3'>   3 
+<a name='L4'>   4 <a href='../Y/4.html' title='Multiple used in 2 places.'>FILE</a>* <a href='../Y/59.html' title='Multiple used in 4 places.'>logp</a>;
+<a name='L5'>   5 
+<a name='L6'>   6 <b>void</b> <a href='../S/13.html#L7' title='Refered from 7 in log.h.'>initlog</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L7'>   7   <a href='../Y/59.html' title='Multiple used in 4 places.'>logp</a> = fopen("log.txt","w");
+<a name='L8'>   8 <font color='red'>}</font>
+<a name='L9'>   9 
+<a name='L10'>  10 <b>int</b> <a href='../S/13.html#L8' title='Refered from 8 in log.h.'>closelog</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L11'>  11   <b>return</b> fclose(<a href='../Y/59.html' title='Multiple used in 4 places.'>logp</a>);
+<a name='L12'>  12 <font color='red'>}</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L6'>[^]</a><a href='#L10'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

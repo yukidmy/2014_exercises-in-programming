@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>shape</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/18.html#L8'>shape</a>               8 movingobject.c movingobject* newmovingobject(object** shape, 
+<a href='../S/18.html#L14'>shape</a>              14 movingobject.c   ret-&gt;obj = shape;
+<a href='../S/18.html#L15'>shape</a>              15 movingobject.c   ret-&gt;currentobj = *shape;
+<a href='../S/7.html#L20'>shape</a>              20 movingobject.h movingobject* newmovingobject(object** shape, 
+<a href='../S/22.html#L7'>shape</a>               7 object.c       object* newobject(int w, int h, char* shape){
+<a href='../S/22.html#L13'>shape</a>              13 object.c         ret-&gt;shape = (char*)malloc(sizeof(char)*w*h);
+<a href='../S/22.html#L14'>shape</a>              14 object.c         strncpy(ret-&gt;shape, shape, w*h);
+<a href='../S/22.html#L19'>shape</a>              19 object.c         free(obj-&gt;shape);
+<a href='../S/22.html#L29'>shape</a>              29 object.c             if(obj-&gt;shape[i*w+j] != ' '){ 
+<a href='../S/22.html#L30'>shape</a>              30 object.c               putdata(x+j, y+i, obj-&gt;shape[i*w+j],(unsigned char)id);
+<a href='../S/27.html#L9'>shape</a>               9 object.h         char* shape;
+<a href='../S/27.html#L12'>shape</a>              12 object.h       object* newobject(int w, int h, char* shape);
+<a href='../S/6.html#L35'>shape</a>              35 screen.c             if(obj-&gt;shape[(int)(obj-&gt;size.x)*y+x] !=' '){
+</pre>
+</body>
+</html>

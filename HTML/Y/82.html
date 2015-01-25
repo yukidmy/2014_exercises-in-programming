@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>pos</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/15.html#L10'>pos</a>                10 enemy.c            mobj-&gt;pos.y = mobj-&gt;pos.y +mobj-&gt;vel.y;
+<a href='../S/15.html#L12'>pos</a>                12 enemy.c            mobj-&gt;pos.y = mobj-&gt;pos.y -mobj-&gt;vel.y;
+<a href='../S/15.html#L19'>pos</a>                19 enemy.c          putobject((mobj-&gt;obj)[l], mobj-&gt;id, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/28.html#L7'>pos</a>                 7 event.c        event* newevent(int time, vector2 pos, vector2 vel,
+<a href='../S/28.html#L12'>pos</a>                12 event.c          ret-&gt;pos = pos;
+<a href='../S/28.html#L21'>pos</a>                21 event.c          printf("%f, %f, ",con-&gt;ev-&gt;pos.x, con-&gt;ev-&gt;pos.y);
+<a href='../S/9.html#L12'>pos</a>                12 event.h          vector2 pos;
+<a href='../S/9.html#L18'>pos</a>                18 event.h        event* newevent(int time, vector2 pos, vector2 vel, 
+<a href='../S/1.html#L31'>pos</a>                31 gamemain.c       putobject(*(mobj-&gt;obj), 0, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/1.html#L42'>pos</a>                42 gamemain.c       static vector2 pos = {SCREENWIDTH/2-1, SCREENHEIGHT-3}; 
+<a href='../S/1.html#L48'>pos</a>                48 gamemain.c         pos.x++;
+<a href='../S/1.html#L52'>pos</a>                52 gamemain.c         pos.x--;
+<a href='../S/1.html#L56'>pos</a>                56 gamemain.c         pos.y--;
+<a href='../S/1.html#L60'>pos</a>                60 gamemain.c         pos.y++;
+<a href='../S/1.html#L65'>pos</a>                65 gamemain.c       *ret = pos;
+<a href='../S/1.html#L97'>pos</a>                97 gamemain.c         mobjp[0]-&gt;pos = mypos;
+<a href='../S/19.html#L25'>pos</a>                25 gamemain2.c      vec2add(&amp;(mobj-&gt;pos), &amp;(mobj-&gt;vel));
+<a href='../S/19.html#L29'>pos</a>                29 gamemain2.c      putobject(*(mobj-&gt;obj), mobj-&gt;id, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L33'>pos</a>                33 gamemain2.c      putobject(*(mobj-&gt;obj), 0, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L78'>pos</a>                78 gamemain2.c      static vector2 pos = {SCREENWIDTH/2-1, SCREENHEIGHT-3}; 
+<a href='../S/19.html#L84'>pos</a>                84 gamemain2.c        pos.x++;
+<a href='../S/19.html#L88'>pos</a>                88 gamemain2.c        pos.x--;
+<a href='../S/19.html#L92'>pos</a>                92 gamemain2.c        pos.y--;
+<a href='../S/19.html#L96'>pos</a>                96 gamemain2.c        pos.y++;
+<a href='../S/19.html#L101'>pos</a>               101 gamemain2.c      *ret = pos;
+<a href='../S/19.html#L124'>pos</a>               124 gamemain2.c            addmo(e-&gt;mobj, e-&gt;pos, e-&gt;vel);
+<a href='../S/19.html#L146'>pos</a>               146 gamemain2.c        mobjp[2]-&gt;pos = mypos;
+<a href='../S/18.html#L29'>pos</a>                29 movingobject.c void setinitposition(movingobject* mobj, vector2 pos){
+<a href='../S/18.html#L30'>pos</a>                30 movingobject.c   mobj-&gt;pos = pos;
+<a href='../S/7.html#L7'>pos</a>                 7 movingobject.h   vector2 pos;
+<a href='../S/7.html#L26'>pos</a>                26 movingobject.h void setinitposition(movingobject* mobj, vector2 pos);
+<a href='../S/8.html#L20'>pos</a>                20 movingobjectmanager.c void addmo(movingobject* mobj, vector2 pos, vector2 vel){
+<a href='../S/8.html#L25'>pos</a>                25 movingobjectmanager.c     tmp-&gt;pos = pos;
+<a href='../S/8.html#L50'>pos</a>                50 movingobjectmanager.c     id = checkcollision(mobj-&gt;pos, mobj-&gt;currentobj);
+<a href='../S/24.html#L7'>pos</a>                 7 movingobjectmanager.h void addmo(movingobject* mobj, vector2 pos, vector2 vel);
+<a href='../S/11.html#L27'>pos</a>                27 scenario.c     void setmark(int pos){
+<a href='../S/11.html#L29'>pos</a>                29 scenario.c       if(pos&lt;cnt){
+<a href='../S/11.html#L30'>pos</a>                30 scenario.c         mark = pos;
+<a href='../S/23.html#L12'>pos</a>                12 scenario.h     void setmark(int pos);
+<a href='../S/6.html#L30'>pos</a>                30 screen.c       unsigned char checkcollision(vector2 pos, object* obj){
+<a href='../S/6.html#L36'>pos</a>                36 screen.c               id = checkbuffer[SCREENWIDTH*((int)(pos.y)+y)+(int)(pos.x)+x];
+<a href='../S/5.html#L20'>pos</a>                20 screen.h       unsigned char checkcollision(vector2 pos, object* obj);
+</pre>
+</body>
+</html>

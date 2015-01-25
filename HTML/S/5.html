@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>screen.h</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/screen.h</h2>
+<i><font color='green'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2><a href='../J/23.html' title='Multiple included from 7 places.'>INCLUDED FROM</a></h2>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* screen.h */</font></i>
+<a name='L2'>   2 <font color='darkred'>#ifndef</font> <a href='../S/5.html#L3' title='Defined at 3 in screen.h.'>_SCREEN_H_</a>
+<a name='L3'>   3 <font color='darkred'>#define</font> <a href='../S/5.html#L2' title='Refered from 2 in screen.h.'>_SCREEN_H_</a>
+<a name='L4'>   4 
+<a name='L5'>   5 <font color='darkred'>#include</font>&lt;<a href='12.html'>vector2.h</a>&gt;
+<a name='L6'>   6 <font color='darkred'>#include</font>&lt;<a href='27.html'>object.h</a>&gt;
+<a name='L7'>   7 
+<a name='L8'>   8 <font color='darkred'>#define</font> <a href='../R/6.html' title='Multiple refered from 20 places.'>SCREENWIDTH</a> 40
+<a name='L9'>   9 <font color='darkred'>#define</font> <a href='../R/5.html' title='Multiple refered from 9 places.'>SCREENHEIGHT</a> 40
+<a name='L10'>  10 
+<a name='L11'>  11 <b>extern</b> <b>unsigned</b> <b>char</b>* <a href='../Y/34.html' title='Multiple used in 6 places.'>dispbuffer</a>;
+<a name='L12'>  12 <b>extern</b> <b>unsigned</b> <b>char</b>* <a href='../Y/24.html' title='Multiple used in 5 places.'>checkbuffer</a>;
+<a name='L13'>  13 
+<a name='L14'>  14 <b>extern</b> <b>const</b> <b>unsigned</b> <b>char</b> <a href='../Y/5.html' title='Multiple used in 7 places.'>NONOBJ</a>;
+<a name='L15'>  15 <b>extern</b> <b>const</b> <b>unsigned</b> <b>char</b> <a href='../Y/13.html' title='Multiple used in 3 places.'>WALL</a>;
+<a name='L16'>  16 <b>extern</b> <b>const</b> <b>unsigned</b> <b>char</b> <a href='../Y/1.html' title='Multiple used in 7 places.'>BORDER</a>;
+<a name='L17'>  17 
+<a name='L18'>  18 <b>void</b> <a href='../S/6.html#L15' title='Defined at 15 in screen.c.'>initscreen</a>(<b>void</b>);
+<a name='L19'>  19 <b>void</b> <a href='../S/6.html#L23' title='Defined at 23 in screen.c.'>putdata</a>(<b>int</b> <a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>, <b>int</b> <a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>, <b>unsigned</b> <b>char</b> <a href='../Y/32.html' title='Multiple used in 3 places.'>d</a>, <b>unsigned</b> <b>char</b> <a href='../Y/21.html' title='Multiple used in 3 places.'>c</a>);
+<a name='L20'>  20 <b>unsigned</b> <b>char</b> <a href='../S/6.html#L30' title='Defined at 30 in screen.c.'>checkcollision</a>(<a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>, <a href='../Y/77.html' title='Multiple used in 8 places.'>object</a>* <a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>);
+<a name='L21'>  21 
+<a name='L22'>  22 <font color='darkred'>#endif</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

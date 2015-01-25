@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>newnode</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/17.html#L16'>newnode</a>            16 bidlist.c        bidnode* newnode = (bidnode*)malloc(sizeof(bidnode));
+<a href='../S/17.html#L17'>newnode</a>            17 bidlist.c        newnode-&gt;data = data; 
+<a href='../S/17.html#L18'>newnode</a>            18 bidlist.c        newnode-&gt;prev = blist-&gt;tail; 
+<a href='../S/17.html#L19'>newnode</a>            19 bidlist.c        newnode-&gt;next = NULL;
+<a href='../S/17.html#L21'>newnode</a>            21 bidlist.c          blist-&gt;tail-&gt;next = newnode;
+<a href='../S/17.html#L23'>newnode</a>            23 bidlist.c        blist-&gt;tail = newnode;
+<a href='../S/17.html#L25'>newnode</a>            25 bidlist.c          blist-&gt;head = newnode;
+</pre>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>x</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/15.html#L19'>x</a>                  19 enemy.c          putobject((mobj-&gt;obj)[l], mobj-&gt;id, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/28.html#L21'>x</a>                  21 event.c          printf("%f, %f, ",con-&gt;ev-&gt;pos.x, con-&gt;ev-&gt;pos.y);
+<a href='../S/28.html#L22'>x</a>                  22 event.c          printf("%f, %f, ",con-&gt;ev-&gt;vel.x, con-&gt;ev-&gt;vel.y);
+<a href='../S/3.html#L59'>x</a>                  59 gameio.c       void gameioput(int x, int y, char ch){
+<a href='../S/3.html#L60'>x</a>                  60 gameio.c         mvaddch(y,x,ch);
+<a href='../S/4.html#L26'>x</a>                  26 gameio.h       void gameioput(int x, int y, char ch);
+<a href='../S/1.html#L31'>x</a>                  31 gamemain.c       putobject(*(mobj-&gt;obj), 0, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/1.html#L48'>x</a>                  48 gamemain.c         pos.x++;
+<a href='../S/1.html#L52'>x</a>                  52 gamemain.c         pos.x--;
+<a href='../S/1.html#L69'>x</a>                  69 gamemain.c       int x,y;
+<a href='../S/1.html#L71'>x</a>                  71 gamemain.c         for(x=0;x&lt;SCREENWIDTH;x++){
+<a href='../S/1.html#L72'>x</a>                  72 gamemain.c           gameioput(x,y,dispbuffer[SCREENWIDTH*y+x]);
+<a href='../S/1.html#L89'>x</a>                  89 gamemain.c         gameioput(SCREENWIDTH+3,1,'0'+(int)mypos.x/10);
+<a href='../S/1.html#L90'>x</a>                  90 gamemain.c         gameioput(SCREENWIDTH+4,1,'0'+(int)mypos.x%10);
+<a href='../S/19.html#L29'>x</a>                  29 gamemain2.c      putobject(*(mobj-&gt;obj), mobj-&gt;id, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L33'>x</a>                  33 gamemain2.c      putobject(*(mobj-&gt;obj), 0, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L84'>x</a>                  84 gamemain2.c        pos.x++;
+<a href='../S/19.html#L88'>x</a>                  88 gamemain2.c        pos.x--;
+<a href='../S/19.html#L105'>x</a>                 105 gamemain2.c      int x,y;
+<a href='../S/19.html#L107'>x</a>                 107 gamemain2.c        for(x=0;x&lt;SCREENWIDTH;x++){
+<a href='../S/19.html#L108'>x</a>                 108 gamemain2.c          gameioput(x,y,dispbuffer[SCREENWIDTH*y+x]);
+<a href='../S/19.html#L130'>x</a>                 130 gamemain2.c        gameioput(SCREENWIDTH+3,1,'0'+(int)mypos.x/10);
+<a href='../S/19.html#L131'>x</a>                 131 gamemain2.c        gameioput(SCREENWIDTH+4,1,'0'+(int)mypos.x%10);
+<a href='../S/19.html#L142'>x</a>                 142 gamemain2.c          tmpv.x +=1;
+<a href='../S/22.html#L11'>x</a>                  11 object.c         ret-&gt;size.x = w;
+<a href='../S/22.html#L23'>x</a>                  23 object.c       void putobject(object* obj, int id, int x, int y){
+<a href='../S/22.html#L25'>x</a>                  25 object.c         int w = obj-&gt;size.x;
+<a href='../S/22.html#L30'>x</a>                  30 object.c               putdata(x+j, y+i, obj-&gt;shape[i*w+j],(unsigned char)id);
+<a href='../S/27.html#L14'>x</a>                  14 object.h       void putobject(object* obj, int id, int x, int y);
+<a href='../S/6.html#L23'>x</a>                  23 screen.c       void putdata(int x, int y, unsigned char d, unsigned char c){
+<a href='../S/6.html#L24'>x</a>                  24 screen.c         if(0&lt;=x&amp;&amp;x&lt;SCREENWIDTH &amp;&amp; 0&lt;=y &amp;&amp; y&lt;SCREENHEIGHT){ 
+<a href='../S/6.html#L25'>x</a>                  25 screen.c           dispbuffer[SCREENWIDTH*y+x]=d;
+<a href='../S/6.html#L26'>x</a>                  26 screen.c           checkbuffer[SCREENWIDTH*y+x]=c;
+<a href='../S/6.html#L31'>x</a>                  31 screen.c         int x,y;
+<a href='../S/6.html#L34'>x</a>                  34 screen.c           for(x=0;x&lt;obj-&gt;size.x;x++){
+<a href='../S/6.html#L35'>x</a>                  35 screen.c             if(obj-&gt;shape[(int)(obj-&gt;size.x)*y+x] !=' '){
+<a href='../S/6.html#L36'>x</a>                  36 screen.c               id = checkbuffer[SCREENWIDTH*((int)(pos.y)+y)+(int)(pos.x)+x];
+<a href='../S/5.html#L19'>x</a>                  19 screen.h       void putdata(int x, int y, unsigned char d, unsigned char c);
+<a href='../S/10.html#L4'>x</a>                   4 vector2.c      vector2 makevector2(double x, double y){
+<a href='../S/10.html#L6'>x</a>                   6 vector2.c        ret.x = x;
+<a href='../S/10.html#L13'>x</a>                  13 vector2.c        ret.x = a.x+b.x;
+<a href='../S/10.html#L19'>x</a>                  19 vector2.c        a-&gt;x = a-&gt;x+b-&gt;x;
+<a href='../S/10.html#L25'>x</a>                  25 vector2.c        ret.x = a.x-b.x;
+<a href='../S/10.html#L31'>x</a>                  31 vector2.c        a-&gt;x = a-&gt;x-b-&gt;x;
+<a href='../S/10.html#L36'>x</a>                  36 vector2.c        return a.x*b.x+a.y*b.y;
+<a href='../S/12.html#L5'>x</a>                   5 vector2.h        double x;
+<a href='../S/12.html#L9'>x</a>                   9 vector2.h      vector2 makevector2(double x, double y);
+</pre>
+</body>
+</html>

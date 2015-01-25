@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>enemy.c</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/enemy.c</h2>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L8'>[^]</a><a href='#L26'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L8' title='Defined at 8.'>onesteppm</a>
+<li><a href='#L17' title='Defined at 17.'>dispa</a>
+<li><a href='#L22' title='Defined at 22.'>bomba</a>
+<li><a href='#L26' title='Defined at 26.'>newenemy</a>
+</ol>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* enemy.c */</font></i>
+<a name='L2'>   2 <font color='darkred'>#include</font>&lt;<a href='14.html'>enemy.h</a>&gt;
+<a name='L3'>   3 <font color='darkred'>#include</font>&lt;<a href='7.html'>movingobject.h</a>&gt;
+<a name='L4'>   4 <font color='darkred'>#include</font>&lt;<a href='27.html'>object.h</a>&gt;
+<a name='L5'>   5 
+<a name='L6'>   6 <b>static</b> <a href='../D/73.html' title='Multiple defined in 2 places.'>object</a>* <a href='../Y/79.html' title='Multiple used in 14 places.'>objp</a>[2];
+<a name='L7'>   7 
+<a name='L8'>   8 <b>static</b> <b>void</b> <a href='../S/15.html#L29' title='Refered from 29 in enemy.c.'>onesteppm</a>(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>)<font color='red'>{</font>
+<a name='L9'>   9   <b>if</b>(((<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/26.html' title='Multiple used in 8 places.'>cnt</a>)/6)%4)<font color='red'>{</font>
+<a name='L10'>  10     <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> = <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> +<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/104.html' title='Multiple used in 13 places.'>vel</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L11'>  11   <font color='red'>}</font><b>else</b><font color='red'>{</font>
+<a name='L12'>  12     <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> = <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a> -<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/104.html' title='Multiple used in 13 places.'>vel</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L13'>  13   <font color='red'>}</font>
+<a name='L14'>  14   <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/26.html' title='Multiple used in 8 places.'>cnt</a> = (<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/26.html' title='Multiple used in 8 places.'>cnt</a> +1)%48;
+<a name='L15'>  15 <font color='red'>}</font>
+<a name='L16'>  16 
+<a name='L17'>  17 <b>static</b> <b>void</b> <a href='../S/15.html#L29' title='Refered from 29 in enemy.c.'>dispa</a>(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>)<font color='red'>{</font>
+<a name='L18'>  18   <b>int</b> <a href='../Y/56.html' title='Multiple used in 2 places.'>l</a> = (<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/26.html' title='Multiple used in 8 places.'>cnt</a>/12)%2;
+<a name='L19'>  19   <a href='../S/22.html#L23' title='Defined at 23 in object.c.'>putobject</a>((<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>)[<a href='../Y/56.html' title='Multiple used in 2 places.'>l</a>], <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/51.html' title='Multiple used in 18 places.'>id</a>, <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>, <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>);
+<a name='L20'>  20 <font color='red'>}</font>
+<a name='L21'>  21 
+<a name='L22'>  22 <b>static</b> <b>int</b> <a href='../R/35.html' title='Multiple refered from 3 places.'>bomba</a>(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>)<font color='red'>{</font>
+<a name='L23'>  23   <b>return</b> 1;
+<a name='L24'>  24 <font color='red'>}</font>
+<a name='L25'>  25 
+<a name='L26'>  26 <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../R/68.html' title='Multiple refered from 2 places.'>newenemy</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L27'>  27   <a href='../Y/79.html' title='Multiple used in 14 places.'>objp</a>[0] = <a href='../S/22.html#L7' title='Defined at 7 in object.c.'>newobject</a>(3,3," : ::: : ");
+<a name='L28'>  28   <a href='../Y/79.html' title='Multiple used in 14 places.'>objp</a>[1] = <a href='../S/22.html#L7' title='Defined at 7 in object.c.'>newobject</a>(3,3," : :*: : ");
+<a name='L29'>  29   <b>return</b> <a href='../S/18.html#L8' title='Defined at 8 in movingobject.c.'>newmovingobject</a>(&amp;<a href='../Y/79.html' title='Multiple used in 14 places.'>objp</a>[0], <a href='../S/15.html#L8' title='Defined at 8 in enemy.c.'>onesteppm</a>, <a href='../S/15.html#L17' title='Defined at 17 in enemy.c.'>dispa</a>, <a href='../D/35.html' title='Multiple defined in 2 places.'>bomba</a>, "enemy");
+<a name='L30'>  30 <font color='red'>}</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L8'>[^]</a><a href='#L26'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>obj</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<pre>
+<a href='../S/15.html#L19'>obj</a>                19 enemy.c          putobject((mobj-&gt;obj)[l], mobj-&gt;id, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/1.html#L31'>obj</a>                31 gamemain.c       putobject(*(mobj-&gt;obj), 0, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L29'>obj</a>                29 gamemain2.c      putobject(*(mobj-&gt;obj), mobj-&gt;id, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/19.html#L33'>obj</a>                33 gamemain2.c      putobject(*(mobj-&gt;obj), 0, mobj-&gt;pos.x, mobj-&gt;pos.y);
+<a href='../S/18.html#L9'>obj</a>                 9 movingobject.c                               void(*onestep)(movingobject* obj),
+<a href='../S/18.html#L10'>obj</a>                10 movingobject.c                               void(*display)(movingobject* obj), 
+<a href='../S/18.html#L11'>obj</a>                11 movingobject.c                               int(*bomb)(movingobject* obj), 
+<a href='../S/18.html#L14'>obj</a>                14 movingobject.c   ret-&gt;obj = shape;
+<a href='../S/7.html#L12'>obj</a>                12 movingobject.h   void (*onestep)(struct movingobject* obj);
+<a href='../S/7.html#L13'>obj</a>                13 movingobject.h   void (*display)(struct movingobject* obj);
+<a href='../S/7.html#L14'>obj</a>                14 movingobject.h   int (*bomb)(struct movingobject* obj);
+<a href='../S/7.html#L16'>obj</a>                16 movingobject.h   object** obj;
+<a href='../S/7.html#L21'>obj</a>                21 movingobject.h                               void(*onestep)(movingobject* obj),
+<a href='../S/7.html#L22'>obj</a>                22 movingobject.h                               void(*display)(movingobject* obj), 
+<a href='../S/7.html#L23'>obj</a>                23 movingobject.h                               int(*bomb)(movingobject* obj), 
+<a href='../S/22.html#L18'>obj</a>                18 object.c       void deleteobject(object* obj){
+<a href='../S/22.html#L19'>obj</a>                19 object.c         free(obj-&gt;shape);
+<a href='../S/22.html#L20'>obj</a>                20 object.c         free(obj);
+<a href='../S/22.html#L23'>obj</a>                23 object.c       void putobject(object* obj, int id, int x, int y){
+<a href='../S/22.html#L25'>obj</a>                25 object.c         int w = obj-&gt;size.x;
+<a href='../S/22.html#L26'>obj</a>                26 object.c         int h = obj-&gt;size.y;
+<a href='../S/22.html#L29'>obj</a>                29 object.c             if(obj-&gt;shape[i*w+j] != ' '){ 
+<a href='../S/22.html#L30'>obj</a>                30 object.c               putdata(x+j, y+i, obj-&gt;shape[i*w+j],(unsigned char)id);
+<a href='../S/27.html#L13'>obj</a>                13 object.h       void deleteobject(object* obj); 
+<a href='../S/27.html#L14'>obj</a>                14 object.h       void putobject(object* obj, int id, int x, int y);
+<a href='../S/6.html#L30'>obj</a>                30 screen.c       unsigned char checkcollision(vector2 pos, object* obj){
+<a href='../S/6.html#L33'>obj</a>                33 screen.c         for(y=0;y&lt;obj-&gt;size.y;y++){
+<a href='../S/6.html#L34'>obj</a>                34 screen.c           for(x=0;x&lt;obj-&gt;size.x;x++){
+<a href='../S/6.html#L35'>obj</a>                35 screen.c             if(obj-&gt;shape[(int)(obj-&gt;size.x)*y+x] !=' '){
+<a href='../S/5.html#L20'>obj</a>                20 screen.h       unsigned char checkcollision(vector2 pos, object* obj);
+</pre>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>movingobjectmanager.c</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/movingobjectmanager.c</h2>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L16'>[^]</a><a href='#L69'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L16' title='Defined at 16.'>initmom</a>
+<li><a href='#L20' title='Defined at 20.'>addmo</a>
+<li><a href='#L33' title='Defined at 33.'>removemo</a>
+<li><a href='#L40' title='Defined at 40.'>putmo</a>
+<li><a href='#L69' title='Defined at 69.'>onestepmo</a>
+</ol>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* movingobjectmanager.c */</font></i>
+<a name='L2'>   2 <font color='darkred'>#include</font>&lt;<a href='24.html'>movingobjectmanager.h</a>&gt;
+<a name='L3'>   3 <font color='darkred'>#include</font>&lt;<a href='5.html'>screen.h</a>&gt;
+<a name='L4'>   4 <font color='darkred'>#include</font>&lt;<a href='21.html'>bidlist.h</a>&gt;
+<a name='L5'>   5 <font color='darkred'>#include</font>&lt;stdlib.h&gt;
+<a name='L6'>   6 <font color='darkred'>#ifdef</font> <a href='../Y/2.html' title='Multiple used in 3 places.'>DEBUG</a>
+<a name='L7'>   7 <font color='darkred'>#include</font>&lt;<a href='13.html'>log.h</a>&gt;
+<a name='L8'>   8 <font color='darkred'>#endif</font>
+<a name='L9'>   9 
+<a name='L10'>  10 <font color='darkred'>#define</font> <a href='../R/2.html' title='Multiple refered from 3 places.'>MAXOBJCNT</a> 250
+<a name='L11'>  11 
+<a name='L12'>  12 <b>static</b> <a href='../D/26.html' title='Multiple defined in 2 places.'>bidlist</a>* <a href='../Y/78.html' title='Multiple used in 8 places.'>objlist</a>;
+<a name='L13'>  13 <b>static</b> <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/73.html' title='Multiple used in 6 places.'>nodes</a>[<a href='../S/8.html#L10' title='Defined at 10 in movingobjectmanager.c.'>MAXOBJCNT</a>];
+<a name='L14'>  14 <b>static</b> <b>int</b> <a href='../Y/30.html' title='Multiple used in 15 places.'>count</a>=0;
+<a name='L15'>  15 
+<a name='L16'>  16 <b>void</b> <a href='../R/59.html' title='Multiple refered from 2 places.'>initmom</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L17'>  17   <a href='../Y/78.html' title='Multiple used in 8 places.'>objlist</a> = <a href='../S/17.html#L6' title='Defined at 6 in bidlist.c.'>newbidlist</a>();
+<a name='L18'>  18 <font color='red'>}</font>
+<a name='L19'>  19 
+<a name='L20'>  20 <b>void</b> <a href='../R/25.html' title='Multiple refered from 3 places.'>addmo</a>(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>, <a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>, <a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/104.html' title='Multiple used in 13 places.'>vel</a>)<font color='red'>{</font>
+<a name='L21'>  21   <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../Y/98.html' title='Multiple used in 7 places.'>tmp</a>;
+<a name='L22'>  22   <b>if</b>(<a href='../Y/30.html' title='Multiple used in 15 places.'>count</a>&lt;<a href='../S/8.html#L10' title='Defined at 10 in movingobjectmanager.c.'>MAXOBJCNT</a>)<font color='red'>{</font>
+<a name='L23'>  23     <a href='../Y/98.html' title='Multiple used in 7 places.'>tmp</a> = (<a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>*)<a href='../Y/60.html' title='Multiple used in 9 places.'>malloc</a>(<b>sizeof</b>(<a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>));
+<a name='L24'>  24     *<a href='../Y/98.html' title='Multiple used in 7 places.'>tmp</a> = *<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>;
+<a name='L25'>  25     <a href='../Y/98.html' title='Multiple used in 7 places.'>tmp</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a> = <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>;
+<a name='L26'>  26     <a href='../Y/98.html' title='Multiple used in 7 places.'>tmp</a>-&gt;<a href='../Y/104.html' title='Multiple used in 13 places.'>vel</a> = <a href='../Y/104.html' title='Multiple used in 13 places.'>vel</a>;
+<a name='L27'>  27     <a href='../S/17.html#L15' title='Defined at 15 in bidlist.c.'>bidlistadd</a>(<a href='../Y/78.html' title='Multiple used in 8 places.'>objlist</a>,<a href='../Y/98.html' title='Multiple used in 7 places.'>tmp</a>);
+<a name='L28'>  28     <a href='../Y/30.html' title='Multiple used in 15 places.'>count</a>++;
+<a name='L29'>  29   <font color='red'>}</font>
+<a name='L30'>  30 <font color='red'>}</font> 
+<a name='L31'>  31 
+<a name='L32'>  32 <i><font color='green'>/* call just after putmo */</font></i>
+<a name='L33'>  33 <b>void</b> <a href='../R/82.html' title='Multiple refered from 4 places.'>removemo</a>(<b>int</b> <a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>)<font color='red'>{</font>
+<a name='L34'>  34   <a href='../Y/30.html' title='Multiple used in 15 places.'>count</a>--;
+<a name='L35'>  35   <a href='../S/18.html#L25' title='Defined at 25 in movingobject.c.'>deletemovingobject</a>(<a href='../Y/73.html' title='Multiple used in 6 places.'>nodes</a>[<a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>]-&gt;<a href='../Y/33.html' title='Multiple used in 10 places.'>data</a>);
+<a name='L36'>  36   <a href='../S/17.html#L31' title='Defined at 31 in bidlist.c.'>bidlistremove</a>(<a href='../Y/78.html' title='Multiple used in 8 places.'>objlist</a>,<a href='../Y/73.html' title='Multiple used in 6 places.'>nodes</a>[<a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>]);
+<a name='L37'>  37 <font color='red'>}</font>
+<a name='L38'>  38 
+<a name='L39'>  39 <i><font color='green'>/* put objects on dispbuffer and checkbuffer */</font></i>
+<a name='L40'>  40 <b>void</b> <a href='../R/78.html' title='Multiple refered from 2 places.'>putmo</a>(<b>void</b>)<font color='red'>{</font> 
+<a name='L41'>  41   <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>;
+<a name='L42'>  42   <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/71.html' title='Multiple used in 21 places.'>node</a>;
+<a name='L43'>  43   <b>int</b> <a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>=0;
+<a name='L44'>  44   <b>int</b> <a href='../Y/51.html' title='Multiple used in 18 places.'>id</a>;
+<a name='L45'>  45   <a href='../S/17.html#L65' title='Defined at 65 in bidlist.c.'>bidlistreset</a>(<a href='../Y/78.html' title='Multiple used in 8 places.'>objlist</a>);
+<a name='L46'>  46   <b>while</b>((<a href='../Y/71.html' title='Multiple used in 21 places.'>node</a> = <a href='../S/17.html#L69' title='Defined at 69 in bidlist.c.'>bidlistnext</a>(<a href='../Y/78.html' title='Multiple used in 8 places.'>objlist</a>)))<font color='red'>{</font>
+<a name='L47'>  47     <a href='../Y/73.html' title='Multiple used in 6 places.'>nodes</a>[<a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>] = <a href='../Y/71.html' title='Multiple used in 21 places.'>node</a>;
+<a name='L48'>  48     <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a> =(<a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>*)(<a href='../Y/71.html' title='Multiple used in 21 places.'>node</a>-&gt;<a href='../Y/33.html' title='Multiple used in 10 places.'>data</a>);
+<a name='L49'>  49     <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/51.html' title='Multiple used in 18 places.'>id</a> = <a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>;
+<a name='L50'>  50     <a href='../Y/51.html' title='Multiple used in 18 places.'>id</a> = <a href='../S/6.html#L30' title='Defined at 30 in screen.c.'>checkcollision</a>(<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>, <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/31.html' title='Multiple used in 3 places.'>currentobj</a>);
+<a name='L51'>  51     <b>if</b>(<a href='../Y/51.html' title='Multiple used in 18 places.'>id</a> == <a href='../Y/1.html' title='Multiple used in 7 places.'>BORDER</a>)<font color='red'>{</font>
+<a name='L52'>  52       <a href='../S/8.html#L33' title='Defined at 33 in movingobjectmanager.c.'>removemo</a>(<a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>);
+<a name='L53'>  53     <font color='red'>}</font><b>else</b> <b>if</b>(<a href='../Y/51.html' title='Multiple used in 18 places.'>id</a>&lt;<a href='../S/8.html#L10' title='Defined at 10 in movingobjectmanager.c.'>MAXOBJCNT</a>)<font color='red'>{</font>
+<a name='L54'>  54       <b>if</b>(<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/20.html' title='Multiple used in 6 places.'>bomb</a>(<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>))<font color='red'>{</font>
+<a name='L55'>  55         <a href='../S/8.html#L33' title='Defined at 33 in movingobjectmanager.c.'>removemo</a>(<a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>);
+<a name='L56'>  56       <font color='red'>}</font>
+<a name='L57'>  57       <b>if</b>(((<a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>*)(<a href='../Y/73.html' title='Multiple used in 6 places.'>nodes</a>[<a href='../Y/51.html' title='Multiple used in 18 places.'>id</a>]-&gt;<a href='../Y/33.html' title='Multiple used in 10 places.'>data</a>))
+<a name='L58'>  58          -&gt;<a href='../Y/20.html' title='Multiple used in 6 places.'>bomb</a>((<a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>*)(<a href='../Y/73.html' title='Multiple used in 6 places.'>nodes</a>[<a href='../Y/51.html' title='Multiple used in 18 places.'>id</a>]-&gt;<a href='../Y/33.html' title='Multiple used in 10 places.'>data</a>)))<font color='red'>{</font>
+<a name='L59'>  59         <a href='../S/8.html#L33' title='Defined at 33 in movingobjectmanager.c.'>removemo</a>(<a href='../Y/51.html' title='Multiple used in 18 places.'>id</a>);
+<a name='L60'>  60       <font color='red'>}</font>
+<a name='L61'>  61     <font color='red'>}</font><b>else</b><font color='red'>{</font>
+<a name='L62'>  62       <a href='../S/18.html#L33' title='Defined at 33 in movingobject.c.'>putmovingobject</a>(<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>);
+<a name='L63'>  63       <a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>++;
+<a name='L64'>  64     <font color='red'>}</font>
+<a name='L65'>  65   <font color='red'>}</font>
+<a name='L66'>  66 <font color='red'>}</font>
+<a name='L67'>  67 
+<a name='L68'>  68 <i><font color='green'>/* put objects on dispbuffer and checkbuffer */</font></i>
+<a name='L69'>  69 <b>void</b> <a href='../R/74.html' title='Multiple refered from 2 places.'>onestepmo</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L70'>  70   <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>;
+<a name='L71'>  71   <a href='../D/34.html' title='Multiple defined in 2 places.'>bidnode</a>* <a href='../Y/71.html' title='Multiple used in 21 places.'>node</a>;
+<a name='L72'>  72   <b>int</b> <a href='../Y/75.html' title='Multiple used in 14 places.'>num</a>=0;
+<a name='L73'>  73   <a href='../S/17.html#L65' title='Defined at 65 in bidlist.c.'>bidlistreset</a>(<a href='../Y/78.html' title='Multiple used in 8 places.'>objlist</a>);
+<a name='L74'>  74   <b>while</b>((<a href='../Y/71.html' title='Multiple used in 21 places.'>node</a> = <a href='../S/17.html#L69' title='Defined at 69 in bidlist.c.'>bidlistnext</a>(<a href='../Y/78.html' title='Multiple used in 8 places.'>objlist</a>)))<font color='red'>{</font>
+<a name='L75'>  75     <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a> = (<a href='../Y/71.html' title='Multiple used in 21 places.'>node</a>-&gt;<a href='../Y/33.html' title='Multiple used in 10 places.'>data</a>);
+<a name='L76'>  76     <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/80.html' title='Multiple used in 5 places.'>onestep</a>(<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>);
+<a name='L77'>  77   <font color='red'>}</font>
+<a name='L78'>  78 <font color='red'>}</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L16'>[^]</a><a href='#L69'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

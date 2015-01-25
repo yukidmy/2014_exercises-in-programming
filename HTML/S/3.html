@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>gameio.c</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/gameio.c</h2>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L12'>[^]</a><a href='#L63'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L12' title='Defined at 12.'>signal_handler</a>
+<li><a href='#L19' title='Defined at 19.'>set_signalhandlers</a>
+<li><a href='#L28' title='Defined at 28.'>gameioinit</a>
+<li><a href='#L36' title='Defined at 36.'>gameioread</a>
+<li><a href='#L45' title='Defined at 45.'>gameiopost</a>
+<li><a href='#L51' title='Defined at 51.'>gameioclear</a>
+<li><a href='#L55' title='Defined at 55.'>gameiorefresh</a>
+<li><a href='#L59' title='Defined at 59.'>gameioput</a>
+<li><a href='#L63' title='Defined at 63.'>gameiousleep</a>
+</ol>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* gameio.c */</font></i>
+<a name='L2'>   2 
+<a name='L3'>   3 <font color='darkred'>#include</font>&lt;stdio.h&gt;
+<a name='L4'>   4 <font color='darkred'>#include</font> &lt;termios.h&gt;
+<a name='L5'>   5 <font color='darkred'>#include</font> &lt;unistd.h&gt;
+<a name='L6'>   6 <font color='darkred'>#include</font> &lt;sys/signal.h&gt;
+<a name='L7'>   7 <font color='darkred'>#include</font> &lt;stdlib.h&gt;
+<a name='L8'>   8 <font color='darkred'>#include</font> &lt;curses.h&gt;
+<a name='L9'>   9 
+<a name='L10'>  10 <b>static</b> WINDOW *<a href='../Y/109.html' title='Multiple used in 3 places.'>win</a>;
+<a name='L11'>  11 
+<a name='L12'>  12 <b>static</b> <b>void</b> <a href='../R/90.html' title='Multiple refered from 5 places.'>signal_handler</a>(<b>int</b> unused)
+<a name='L13'>  13 <font color='red'>{</font>
+<a name='L14'>  14   <a href='../Y/85.html' title='Multiple used in 7 places.'>printf</a>("handler\n");
+<a name='L15'>  15   <a href='../Y/38.html' title='Multiple used in 2 places.'>endwin</a>();
+<a name='L16'>  16   exit(EXIT_SUCCESS);
+<a name='L17'>  17 <font color='red'>}</font>
+<a name='L18'>  18 
+<a name='L19'>  19 <b>static</b> <b>void</b> <a href='../S/3.html#L29' title='Refered from 29 in gameio.c.'>set_signalhandlers</a>(<b>void</b>)
+<a name='L20'>  20 <font color='red'>{</font>
+<a name='L21'>  21     <a href='../Y/91.html' title='Multiple used in 5 places.'>signal</a>(SIGHUP, <a href='../S/3.html#L12' title='Defined at 12 in gameio.c.'>signal_handler</a>);
+<a name='L22'>  22     <a href='../Y/91.html' title='Multiple used in 5 places.'>signal</a>(SIGINT, <a href='../S/3.html#L12' title='Defined at 12 in gameio.c.'>signal_handler</a>);
+<a name='L23'>  23     <a href='../Y/91.html' title='Multiple used in 5 places.'>signal</a>(SIGILL, <a href='../S/3.html#L12' title='Defined at 12 in gameio.c.'>signal_handler</a>);
+<a name='L24'>  24     <a href='../Y/91.html' title='Multiple used in 5 places.'>signal</a>(SIGTERM,<a href='../S/3.html#L12' title='Defined at 12 in gameio.c.'>signal_handler</a>);
+<a name='L25'>  25     <a href='../Y/91.html' title='Multiple used in 5 places.'>signal</a>(SIGQUIT,<a href='../S/3.html#L12' title='Defined at 12 in gameio.c.'>signal_handler</a>);
+<a name='L26'>  26 <font color='red'>}</font>
+<a name='L27'>  27 
+<a name='L28'>  28 <b>void</b> <a href='../R/46.html' title='Multiple refered from 3 places.'>gameioinit</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L29'>  29   <a href='../S/3.html#L19' title='Defined at 19 in gameio.c.'>set_signalhandlers</a>();
+<a name='L30'>  30   <a href='../Y/109.html' title='Multiple used in 3 places.'>win</a> = initscr();
+<a name='L31'>  31   nodelay(<a href='../Y/109.html' title='Multiple used in 3 places.'>win</a>,TRUE);
+<a name='L32'>  32   cbreak();
+<a name='L33'>  33   noecho();
+<a name='L34'>  34 <font color='red'>}</font>
+<a name='L35'>  35 
+<a name='L36'>  36 <b>int</b> <a href='../R/49.html' title='Multiple refered from 3 places.'>gameioread</a>()<font color='red'>{</font>
+<a name='L37'>  37   <b>int</b> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a> = getch();
+<a name='L38'>  38   <b>if</b> (<a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a> &lt;=0)<font color='red'>{</font>
+<a name='L39'>  39     <b>return</b> 0;
+<a name='L40'>  40   <font color='red'>}</font><b>else</b><font color='red'>{</font>
+<a name='L41'>  41     <b>return</b> <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>;
+<a name='L42'>  42   <font color='red'>}</font>
+<a name='L43'>  43 <font color='red'>}</font>
+<a name='L44'>  44 
+<a name='L45'>  45 <b>void</b> <a href='../R/47.html' title='Multiple refered from 3 places.'>gameiopost</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L46'>  46   nocbreak();
+<a name='L47'>  47   echo();
+<a name='L48'>  48   <a href='../Y/38.html' title='Multiple used in 2 places.'>endwin</a>();
+<a name='L49'>  49 <font color='red'>}</font>
+<a name='L50'>  50 
+<a name='L51'>  51 <b>void</b> <a href='../R/45.html' title='Multiple refered from 3 places.'>gameioclear</a>()<font color='red'>{</font>
+<a name='L52'>  52   clear();
+<a name='L53'>  53 <font color='red'>}</font>
+<a name='L54'>  54 
+<a name='L55'>  55 <b>void</b> <a href='../R/50.html' title='Multiple refered from 3 places.'>gameiorefresh</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L56'>  56   refresh();
+<a name='L57'>  57 <font color='red'>}</font>
+<a name='L58'>  58 
+<a name='L59'>  59 <b>void</b> <a href='../R/48.html' title='Multiple refered from 11 places.'>gameioput</a>(<b>int</b> <a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>, <b>int</b> <a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>, <b>char</b> <a href='../Y/23.html' title='Multiple used in 3 places.'>ch</a>)<font color='red'>{</font>
+<a name='L60'>  60   mvaddch(<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>,<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>,<a href='../Y/23.html' title='Multiple used in 3 places.'>ch</a>);
+<a name='L61'>  61 <font color='red'>}</font>
+<a name='L62'>  62 
+<a name='L63'>  63 <b>void</b> <a href='../R/51.html' title='Multiple refered from 3 places.'>gameiousleep</a>(<b>int</b> <a href='../Y/95.html' title='Multiple used in 3 places.'>t</a>)<font color='red'>{</font>
+<a name='L64'>  64   usleep(<a href='../Y/95.html' title='Multiple used in 3 places.'>t</a>);
+<a name='L65'>  65 <font color='red'>}</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L12'>[^]</a><a href='#L63'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

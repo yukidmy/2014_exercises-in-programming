@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>movingobject.h</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/movingobject.h</h2>
+<i><font color='green'>/* [&lt;][&gt;][^][v][top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2><a href='../J/15.html' title='Multiple included from 6 places.'>INCLUDED FROM</a></h2>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* movingobject.h */</font></i>
+<a name='L2'>   2 <font color='darkred'>#ifndef</font> <a href='../S/7.html#L3' title='Defined at 3 in movingobject.h.'>_MOVINGOBJECT_H_</a>
+<a name='L3'>   3 <font color='darkred'>#define</font> <a href='../S/7.html#L2' title='Refered from 2 in movingobject.h.'>_MOVINGOBJECT_H_</a>
+<a name='L4'>   4 <font color='darkred'>#include</font>&lt;<a href='27.html'>object.h</a>&gt;
+<a name='L5'>   5 
+<a name='L6'>   6 <b>typedef</b> <b>struct</b> <a href='../R/66.html' title='Multiple refered from 18 places.'>movingobject</a><font color='red'>{</font>
+<a name='L7'>   7   <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>;
+<a name='L8'>   8   <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../Y/104.html' title='Multiple used in 13 places.'>vel</a>;
+<a name='L9'>   9   <b>int</b> <a href='../Y/43.html' title='Multiple used in 2 places.'>flag</a>;
+<a name='L10'>  10   <b>int</b> <a href='../Y/26.html' title='Multiple used in 8 places.'>cnt</a>;
+<a name='L11'>  11   <b>int</b> <a href='../Y/51.html' title='Multiple used in 18 places.'>id</a>;
+<a name='L12'>  12   <b>void</b> (*<a href='../Y/80.html' title='Multiple used in 5 places.'>onestep</a>)(<b>struct</b> <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>);
+<a name='L13'>  13   <b>void</b> (*<a href='../Y/35.html' title='Multiple used in 5 places.'>display</a>)(<b>struct</b> <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>);
+<a name='L14'>  14   <b>int</b> (*<a href='../Y/20.html' title='Multiple used in 6 places.'>bomb</a>)(<b>struct</b> <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>);
+<a name='L15'>  15   <b>char</b>* <a href='../Y/67.html' title='Multiple used in 9 places.'>name</a>; 
+<a name='L16'>  16   <a href='../D/73.html' title='Multiple defined in 2 places.'>object</a>** <a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>;
+<a name='L17'>  17   <a href='../D/73.html' title='Multiple defined in 2 places.'>object</a>* <a href='../Y/31.html' title='Multiple used in 3 places.'>currentobj</a>;
+<a name='L18'>  18 <font color='red'>}</font> <a href='../R/66.html' title='Multiple refered from 18 places.'>movingobject</a>;
+<a name='L19'>  19 
+<a name='L20'>  20 <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../S/18.html#L8' title='Defined at 8 in movingobject.c.'>newmovingobject</a>(<a href='../Y/77.html' title='Multiple used in 8 places.'>object</a>** <a href='../Y/90.html' title='Multiple used in 13 places.'>shape</a>, 
+<a name='L21'>  21                               <b>void</b>(*<a href='../Y/80.html' title='Multiple used in 5 places.'>onestep</a>)(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>),
+<a name='L22'>  22                               <b>void</b>(*<a href='../Y/35.html' title='Multiple used in 5 places.'>display</a>)(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>), 
+<a name='L23'>  23                               <b>int</b>(*<a href='../Y/20.html' title='Multiple used in 6 places.'>bomb</a>)(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>), 
+<a name='L24'>  24                               <b>char</b>* <a href='../Y/67.html' title='Multiple used in 9 places.'>name</a>);
+<a name='L25'>  25 <b>void</b> <a href='../S/18.html#L25' title='Defined at 25 in movingobject.c.'>deletemovingobject</a>(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>);
+<a name='L26'>  26 <b>void</b> <a href='../S/18.html#L29' title='Defined at 29 in movingobject.c.'>setinitposition</a>(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>, <a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a> <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>);
+<a name='L27'>  27 <b>void</b> <a href='../S/18.html#L33' title='Defined at 33 in movingobject.c.'>putmovingobject</a>(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>); 
+<a name='L28'>  28 
+<a name='L29'>  29 <font color='darkred'>#endif</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;][^][v]<a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>

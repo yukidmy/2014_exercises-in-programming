@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>gamemain.c</title>
+<meta name='robots' content='noindex,nofollow'>
+<meta name='generator' content='GLOBAL-5.7.1'>
+</head>
+<body text='#191970' bgcolor='#f5f5dc' vlink='gray'>
+<a name='TOP'><h2><a href='../files.html'>root</a>/gamemain.c</h2>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L22'>[^]</a><a href='#L104'>[v]</a>[top]<a href='#BOTTOM'>[bottom]</a><a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+<hr>
+<h2>DEFINITIONS</h2>
+This source file includes following definitions.
+<ol>
+<li><a href='#L22' title='Defined at 22.'>initobjects</a>
+<li><a href='#L26' title='Defined at 26.'>initmovingobjects</a>
+<li><a href='#L30' title='Defined at 30.'>dispm</a>
+<li><a href='#L34' title='Defined at 34.'>init</a>
+<li><a href='#L41' title='Defined at 41.'>getstate</a>
+<li><a href='#L68' title='Defined at 68.'>show</a>
+<li><a href='#L78' title='Defined at 78.'>gameloop</a>
+<li><a href='#L104' title='Defined at 104.'>main</a>
+</ol>
+<hr>
+<pre>
+<a name='L1'>   1 <i><font color='green'>/* gamemain.c */</font></i>
+<a name='L2'>   2 <font color='darkred'>#include</font>&lt;<a href='5.html'>screen.h</a>&gt;
+<a name='L3'>   3 <font color='darkred'>#include</font>&lt;<a href='4.html'>gameio.h</a>&gt;
+<a name='L4'>   4 <font color='darkred'>#include</font>&lt;<a href='16.html'>walls.h</a>&gt;
+<a name='L5'>   5 <font color='darkred'>#include</font>&lt;stdio.h&gt;
+<a name='L6'>   6 <font color='darkred'>#include</font>&lt;<a href='27.html'>object.h</a>&gt;
+<a name='L7'>   7 <font color='darkred'>#include</font>&lt;<a href='7.html'>movingobject.h</a>&gt;
+<a name='L8'>   8 <font color='darkred'>#ifdef</font> <a href='../Y/2.html' title='Multiple used in 3 places.'>DEBUG</a>
+<a name='L9'>   9 <font color='darkred'>#include</font>&lt;<a href='13.html'>log.h</a>&gt;
+<a name='L10'>  10 <font color='darkred'>#endif</font>
+<a name='L11'>  11 
+<a name='L12'>  12 <font color='darkred'>#define</font> <a href='../R/4.html' title='Multiple refered from 2 places.'>OBJNUM</a> 1
+<a name='L13'>  13 <font color='darkred'>#define</font> <a href='../R/3.html' title='Multiple refered from 2 places.'>MOBJNUM</a> 1
+<a name='L14'>  14 
+<a name='L15'>  15 <a href='../D/73.html' title='Multiple defined in 2 places.'>object</a>* <a href='../Y/79.html' title='Multiple used in 14 places.'>objp</a>[<a href='../D/4.html' title='Multiple defined in 2 places.'>OBJNUM</a>];
+<a name='L16'>  16 <a href='../D/67.html' title='Multiple defined in 2 places.'>movingobject</a>* <a href='../Y/63.html' title='Multiple used in 17 places.'>mobjp</a>[<a href='../D/3.html' title='Multiple defined in 2 places.'>MOBJNUM</a>];
+<a name='L17'>  17 <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../Y/66.html' title='Multiple used in 17 places.'>mypos</a>;
+<a name='L18'>  18 <b>int</b> <a href='../Y/54.html' title='Multiple used in 11 places.'>isfire</a>;
+<a name='L19'>  19 <b>int</b> <a href='../Y/89.html' title='Multiple used in 8 places.'>score</a>;
+<a name='L20'>  20 
+<a name='L21'>  21 
+<a name='L22'>  22 <b>void</b> <a href='../R/61.html' title='Multiple refered from 2 places.'>initobjects</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L23'>  23   <a href='../Y/79.html' title='Multiple used in 14 places.'>objp</a>[0] = <a href='../S/22.html#L7' title='Defined at 7 in object.c.'>newobject</a>(3,2," ^ =x=");
+<a name='L24'>  24 <font color='red'>}</font>
+<a name='L25'>  25 
+<a name='L26'>  26 <b>void</b> <a href='../R/60.html' title='Multiple refered from 2 places.'>initmovingobjects</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L27'>  27   <a href='../Y/63.html' title='Multiple used in 17 places.'>mobjp</a>[0] = <a href='../S/18.html#L8' title='Defined at 8 in movingobject.c.'>newmovingobject</a>(&amp;<a href='../Y/79.html' title='Multiple used in 14 places.'>objp</a>[0], <a href='../Y/6.html' title='Multiple used in 14 places.'>NULL</a>, <a href='../Y/6.html' title='Multiple used in 14 places.'>NULL</a>, <a href='../Y/6.html' title='Multiple used in 14 places.'>NULL</a>, "me");
+<a name='L28'>  28 <font color='red'>}</font>
+<a name='L29'>  29 
+<a name='L30'>  30 <b>void</b> <a href='../R/43.html' title='Multiple refered from 3 places.'>dispm</a>(<a href='../Y/64.html' title='Multiple used in 24 places.'>movingobject</a>* <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>)<font color='red'>{</font>
+<a name='L31'>  31   <a href='../S/22.html#L23' title='Defined at 23 in object.c.'>putobject</a>(*(<a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/76.html' title='Multiple used in 30 places.'>obj</a>), 0, <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>, <a href='../Y/62.html' title='Multiple used in 44 places.'>mobj</a>-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>);
+<a name='L32'>  32 <font color='red'>}</font>
+<a name='L33'>  33 
+<a name='L34'>  34 <b>void</b> <a href='../R/57.html' title='Multiple refered from 2 places.'>init</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L35'>  35   <a href='../S/6.html#L15' title='Defined at 15 in screen.c.'>initscreen</a>();
+<a name='L36'>  36   <a href='../S/2.html#L88' title='Defined at 88 in walls.c.'>initwalls</a>();
+<a name='L37'>  37   <a href='../D/61.html' title='Multiple defined in 2 places.'>initobjects</a>();
+<a name='L38'>  38   <a href='../D/60.html' title='Multiple defined in 2 places.'>initmovingobjects</a>();
+<a name='L39'>  39 <font color='red'>}</font>
+<a name='L40'>  40 
+<a name='L41'>  41 <b>void</b> <a href='../R/56.html' title='Multiple refered from 2 places.'>getstate</a>(<a href='../Y/103.html' title='Multiple used in 20 places.'>vector2</a>* <a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a>, <b>int</b>* <a href='../Y/54.html' title='Multiple used in 11 places.'>isfire</a>)<font color='red'>{</font>
+<a name='L42'>  42   <b>static</b> <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a> = <font color='red'>{</font><a href='../S/5.html#L8' title='Defined at 8 in screen.h.'>SCREENWIDTH</a>/2-1, <a href='../S/5.html#L9' title='Defined at 9 in screen.h.'>SCREENHEIGHT</a>-3<font color='red'>}</font>; 
+<a name='L43'>  43   *<a href='../Y/54.html' title='Multiple used in 11 places.'>isfire</a> = 0;
+<a name='L44'>  44   <b>int</b> <a href='../Y/52.html' title='Multiple used in 4 places.'>in</a> = <a href='../S/3.html#L36' title='Defined at 36 in gameio.c.'>gameioread</a>();
+<a name='L45'>  45   <b>switch</b>(<a href='../Y/52.html' title='Multiple used in 4 places.'>in</a>)<font color='red'>{</font>
+<a name='L46'>  46   <b>case</b> 'f':
+<a name='L47'>  47   <b>case</b> 'F':
+<a name='L48'>  48     <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>++;
+<a name='L49'>  49     <b>break</b>;
+<a name='L50'>  50   <b>case</b> 'b':
+<a name='L51'>  51   <b>case</b> 'B':
+<a name='L52'>  52     <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>--;
+<a name='L53'>  53     <b>break</b>;
+<a name='L54'>  54   <b>case</b> 'p':
+<a name='L55'>  55   <b>case</b> 'P':
+<a name='L56'>  56     <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>--;
+<a name='L57'>  57     <b>break</b>;
+<a name='L58'>  58   <b>case</b> 'n':
+<a name='L59'>  59   <b>case</b> 'N':
+<a name='L60'>  60     <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>++;
+<a name='L61'>  61     <b>break</b>;
+<a name='L62'>  62   <b>case</b> ' ':
+<a name='L63'>  63     *<a href='../Y/54.html' title='Multiple used in 11 places.'>isfire</a> = 1;
+<a name='L64'>  64   <font color='red'>}</font> 
+<a name='L65'>  65   *<a href='../Y/87.html' title='Multiple used in 55 places.'>ret</a> = <a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a>;
+<a name='L66'>  66 <font color='red'>}</font>
+<a name='L67'>  67 
+<a name='L68'>  68 <b>void</b> <a href='../R/89.html' title='Multiple refered from 2 places.'>show</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L69'>  69   <b>int</b> <a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>,<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>;
+<a name='L70'>  70   <b>for</b>(<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>=0;<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>&lt;<a href='../S/5.html#L9' title='Defined at 9 in screen.h.'>SCREENHEIGHT</a>;<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>++)<font color='red'>{</font>
+<a name='L71'>  71     <b>for</b>(<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>=0;<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>&lt;<a href='../S/5.html#L8' title='Defined at 8 in screen.h.'>SCREENWIDTH</a>;<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>++)<font color='red'>{</font>
+<a name='L72'>  72       <a href='../S/3.html#L59' title='Defined at 59 in gameio.c.'>gameioput</a>(<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>,<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>,<a href='../Y/34.html' title='Multiple used in 6 places.'>dispbuffer</a>[<a href='../S/5.html#L8' title='Defined at 8 in screen.h.'>SCREENWIDTH</a>*<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>+<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>]);
+<a name='L73'>  73     <font color='red'>}</font>
+<a name='L74'>  74   <font color='red'>}</font>
+<a name='L75'>  75   <a href='../S/3.html#L55' title='Defined at 55 in gameio.c.'>gameiorefresh</a>();
+<a name='L76'>  76 <font color='red'>}</font>
+<a name='L77'>  77 
+<a name='L78'>  78 <b>void</b> <a href='../R/52.html' title='Multiple refered from 2 places.'>gameloop</a>(<b>void</b>)<font color='red'>{</font>
+<a name='L79'>  79   <b>int</b> <a href='../Y/93.html' title='Multiple used in 5 places.'>speedlevel</a> = 8; 
+<a name='L80'>  80   <b>int</b> <a href='../Y/97.html' title='Multiple used in 12 places.'>time</a>=0;
+<a name='L81'>  81   <a href='../D/97.html' title='Multiple defined in 2 places.'>vector2</a> <a href='../Y/99.html' title='Multiple used in 6 places.'>tmpv</a>;
+<a name='L82'>  82   <b>while</b>(1)<font color='red'>{</font>
+<a name='L83'>  83     <a href='../S/3.html#L63' title='Defined at 63 in gameio.c.'>gameiousleep</a>(30000);
+<a name='L84'>  84     <b>if</b>(<a href='../Y/97.html' title='Multiple used in 12 places.'>time</a>%<a href='../Y/93.html' title='Multiple used in 5 places.'>speedlevel</a> == 0)<font color='red'>{</font>
+<a name='L85'>  85       <a href='../S/2.html#L101' title='Defined at 101 in walls.c.'>scrollwall</a>();
+<a name='L86'>  86       <a href='../Y/89.html' title='Multiple used in 8 places.'>score</a>++;
+<a name='L87'>  87     <font color='red'>}</font>
+<a name='L88'>  88     <a href='../D/56.html' title='Multiple defined in 2 places.'>getstate</a>(&amp;<a href='../Y/66.html' title='Multiple used in 17 places.'>mypos</a>, &amp;<a href='../Y/54.html' title='Multiple used in 11 places.'>isfire</a>);
+<a name='L89'>  89     <a href='../S/3.html#L59' title='Defined at 59 in gameio.c.'>gameioput</a>(<a href='../S/5.html#L8' title='Defined at 8 in screen.h.'>SCREENWIDTH</a>+3,1,'0'+(<b>int</b>)<a href='../Y/66.html' title='Multiple used in 17 places.'>mypos</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>/10);
+<a name='L90'>  90     <a href='../S/3.html#L59' title='Defined at 59 in gameio.c.'>gameioput</a>(<a href='../S/5.html#L8' title='Defined at 8 in screen.h.'>SCREENWIDTH</a>+4,1,'0'+(<b>int</b>)<a href='../Y/66.html' title='Multiple used in 17 places.'>mypos</a>.<a href='../Y/110.html' title='Multiple used in 47 places.'>x</a>%10);
+<a name='L91'>  91     <a href='../S/3.html#L59' title='Defined at 59 in gameio.c.'>gameioput</a>(<a href='../S/5.html#L8' title='Defined at 8 in screen.h.'>SCREENWIDTH</a>+6,1,'0'+(<b>int</b>)<a href='../Y/66.html' title='Multiple used in 17 places.'>mypos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>/10);
+<a name='L92'>  92     <a href='../S/3.html#L59' title='Defined at 59 in gameio.c.'>gameioput</a>(<a href='../S/5.html#L8' title='Defined at 8 in screen.h.'>SCREENWIDTH</a>+7,1,'0'+(<b>int</b>)<a href='../Y/66.html' title='Multiple used in 17 places.'>mypos</a>.<a href='../Y/111.html' title='Multiple used in 49 places.'>y</a>%10);
+<a name='L93'>  93     <a href='../S/2.html#L105' title='Defined at 105 in walls.c.'>putwalls</a>(<a href='../S/5.html#L9' title='Defined at 9 in screen.h.'>SCREENHEIGHT</a>);
+<a name='L94'>  94     <b>if</b>(<a href='../S/6.html#L30' title='Defined at 30 in screen.c.'>checkcollision</a>(<a href='../Y/66.html' title='Multiple used in 17 places.'>mypos</a>, <a href='../Y/79.html' title='Multiple used in 14 places.'>objp</a>[0])!=<a href='../Y/5.html' title='Multiple used in 7 places.'>NONOBJ</a>)<font color='red'>{</font>
+<a name='L95'>  95       <b>break</b>;
+<a name='L96'>  96     <font color='red'>}</font>
+<a name='L97'>  97     <a href='../Y/63.html' title='Multiple used in 17 places.'>mobjp</a>[0]-&gt;<a href='../Y/82.html' title='Multiple used in 42 places.'>pos</a> = <a href='../Y/66.html' title='Multiple used in 17 places.'>mypos</a>;
+<a name='L98'>  98     <a href='../D/43.html' title='Multiple defined in 2 places.'>dispm</a>(<a href='../Y/63.html' title='Multiple used in 17 places.'>mobjp</a>[0]);
+<a name='L99'>  99     <a href='../D/90.html' title='Multiple defined in 2 places.'>show</a>();
+<a name='L100'> 100     <a href='../Y/97.html' title='Multiple used in 12 places.'>time</a>++;
+<a name='L101'> 101   <font color='red'>}</font>
+<a name='L102'> 102 <font color='red'>}</font>
+<a name='L103'> 103 
+<a name='L104'> 104 <b>int</b> main(<b>void</b>)<font color='red'>{</font>
+<a name='L105'> 105   <a href='../S/3.html#L28' title='Defined at 28 in gameio.c.'>gameioinit</a>();
+<a name='L106'> 106   <a href='../S/3.html#L51' title='Defined at 51 in gameio.c.'>gameioclear</a>();
+<a name='L107'> 107   <a href='../D/57.html' title='Multiple defined in 2 places.'>init</a>();
+<a name='L108'> 108   
+<a name='L109'> 109   <a href='../Y/89.html' title='Multiple used in 8 places.'>score</a>=0;
+<a name='L110'> 110   <a href='../D/52.html' title='Multiple defined in 2 places.'>gameloop</a>();
+<a name='L111'> 111 
+<a name='L112'> 112   <a href='../S/3.html#L45' title='Defined at 45 in gameio.c.'>gameiopost</a>();
+<a name='L113'> 113   <a href='../Y/85.html' title='Multiple used in 7 places.'>printf</a>("score %d\n",<a href='../Y/89.html' title='Multiple used in 8 places.'>score</a>);
+<a name='L114'> 114   <b>return</b> 0;
+<a name='L115'> 115 <font color='red'>}</font>
+</pre>
+<hr>
+<a name='BOTTOM'>
+<i><font color='green'>/* [&lt;][&gt;]<a href='#L22'>[^]</a><a href='#L104'>[v]</a><a href='#TOP'>[top]</a>[bottom]<a href='../mains.html'>[index]</a><a href='../help.html'>[help]</a> */</font></i>
+</body>
+</html>
